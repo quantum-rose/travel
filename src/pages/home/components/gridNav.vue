@@ -131,7 +131,7 @@ export default {
 
       .hot {
         position: absolute;
-        right 50%
+        right: 50%;
         bottom: 50%;
         transform: translate(85%, -0.16rem);
         padding: 0.04rem 0.08rem;
@@ -168,7 +168,7 @@ export default {
   }
 
   .grid-nav-hotel {
-    background: linear-gradient(to right, #fa5956, #fb8650);
+    background: linear-gradient(to right, #fa5956, #fb8650 54%);
 
     a:nth-child(1) {
       background: url('../../../assets/images/grid-nav-items-hotel@v7.15.png') no-repeat;
@@ -180,6 +180,7 @@ export default {
 
     a:nth-child(3) {
       flex: 46;
+      padding-left: 0.02rem;
       background: linear-gradient(to right, #ffbc49, #ffd252);
 
       div {

@@ -1,8 +1,10 @@
 <template>
   <div class="header" :style="headerStyle">
     <div class="header-left">
-      郑州
-      <i class="iconfont">&#xe62d;</i>
+      <router-link to="/city" :style="cityStyle">
+        郑州
+        <i class="iconfont">&#xe62d;</i>
+      </router-link>
     </div>
     <div class="search">
       <i class="iconfont">&#xe632;</i>
@@ -28,39 +30,40 @@ export default {
     return {
       headerStyle: {
         backgroundColor: 'rgba(255, 255, 255, 0)',
-        boxShadow: 'none',
-        color: '#fff'
+        boxShadow: 'none'
       },
       searchStyle: {
         backgroundColor: 'rgba(255, 255, 255, 1)'
       },
       circleStyle: {
-        borderColor: 'rgba(255,255,255,.2)'
+        borderColor: 'rgb(255,255,255)'
       },
       pointStyle: {
         backgroundColor: 'rgb(255,255,255)'
+      },
+      cityStyle: {
+        color: 'rgb(255,255,255)'
       }
     }
   },
   methods: {
-    handleScroll(e) {
+    handleScroll() {
+      let scrollY = window.scrollY
       if (window.scrollY > 90) {
+        scrollY = 90
         this.headerStyle.boxShadow = '0 0.04rem 0.04rem rgba(0,0,0,.2)'
       } else {
         this.headerStyle.boxShadow = 'none'
       }
-      let scrollY = window.scrollY > 90 ? 90 : window.scrollY
-
-      let opacity = scrollY / 90
-      this.headerStyle.backgroundColor = `rgba(255,255,255,${opacity})`
-
-      let color = 255 - (scrollY / 150) * 255
-      this.headerStyle.color = `rgb(${color},${color},${color})`
-      this.circleStyle.borderColor = `rgba(${color},${color},${color},.2)`
-      this.pointStyle.backgroundColor = `rgb(${color},${color},${color})`
-
-      let bgc = 255 - (scrollY / 810) * 255
-      this.searchStyle.backgroundColor = `rgb(${bgc},${bgc},${bgc})`
+      this.headerStyle.backgroundColor = `rgba(255,255,255,${scrollY / 90})`
+      let rgb = 255 - (scrollY / 1350) * 255
+      let color = `rgb(${rgb},${rgb},${rgb})`
+      this.searchStyle.backgroundColor = color
+      this.circleStyle.borderColor = color
+      rgb = 255 - (scrollY / 150) * 255
+      color = `rgb(${rgb},${rgb},${rgb})`
+      this.cityStyle.color = color
+      this.pointStyle.backgroundColor = color
     }
   }
 }
@@ -90,10 +93,8 @@ export default {
     display: flex;
     align-items: center;
     flex: 1;
-    height: 0.88rem;
 
     .iconfont {
-      float: left;
       position: absolute;
       margin-left: 0.12rem;
       color: #00bcd4;
@@ -102,7 +103,6 @@ export default {
     input {
       flex: 1;
       padding: 0 0.28rem 0 0.56rem;
-      height: 0.64rem;
       line-height: 0.64rem;
       border-radius: 0.32rem;
     }
@@ -112,7 +112,6 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    float: right;
     width: 1rem;
 
     .circle {
@@ -122,7 +121,7 @@ export default {
       width: 0.6rem;
       height: 0.48rem;
       border-radius: 0.48rem;
-      border: 0.02rem solid rgba(255, 255, 255, 0.2);
+      border: 0.01rem solid rgb(255, 255, 255);
       box-sizing: border-box;
 
       span {

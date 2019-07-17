@@ -71,6 +71,7 @@ export default {
 
         a {
           font-size: 0.24rem;
+          text-align: center;
 
           div {
             width: 0.8rem;
@@ -78,10 +79,6 @@ export default {
             margin: 0 auto;
             background: url('../../../assets/images/home-fivemain-sprite2x@v7.15.png') no-repeat 0 (num * -0.8rem);
             background-size: 0.8rem auto;
-          }
-
-          p {
-            text-align: center;
           }
         }
       }

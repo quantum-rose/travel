@@ -4,7 +4,9 @@
       <swiper-slide v-for="item in swiperImages" :key="item.id">
         <img class="swiper-img" :src="item.url" />
       </swiper-slide>
-      <div class="swiper-pagination" slot="pagination"></div>
+      <template #pagination>
+        <div class="swiper-pagination"></div>
+      </template>
     </swiper>
   </div>
 </template>
@@ -81,27 +83,28 @@ export default {
       left: auto;
       bottom: 15vw;
     }
-  }
 
-  .swiper::before {
-    content: '';
-    z-index: 1000;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 0.88rem;
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
-  }
+    &::before {
+      content: '';
+      z-index: 1000;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 0.88rem;
+      background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0));
+    }
 
-  .swiper::after {
-    content: '';
-    z-index: 1000;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 0.88rem;
-    box-shadow: 0 0.6rem 0 0.6rem #fff;
-    border-bottom-left-radius: 50% 0.6rem;
-    border-bottom-right-radius: 50% 0.6rem;
+    &::after {
+      content: '';
+      z-index: 1000;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 0.88rem;
+      box-shadow: 0 0.6rem 0 0.6rem #fff;
+      border-bottom-left-radius: 50% 0.6rem;
+      border-bottom-right-radius: 50% 0.6rem;
+    }
   }
-}</style>
+}
+</style>

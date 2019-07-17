@@ -81,7 +81,6 @@ export default {
     .subnav-title {
       font-size: 0.24rem;
       text-align: center;
-      color: #222;
     }
   }
 
