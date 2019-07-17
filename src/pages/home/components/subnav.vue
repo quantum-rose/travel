@@ -2,8 +2,8 @@
   <ul class="subnav">
     <li v-for="item in subnavs" :key="item.id">
       <a href="javascript:;">
-        <div></div>
-        <p>{{item.title}}</p>
+        <div class="subnav-image"></div>
+        <p class="subnav-title">{{item.title}}</p>
       </a>
     </li>
   </ul>
@@ -64,21 +64,21 @@ export default {
 
 <style lang="stylus" scoped>
 .subnav {
-  height: 110px;
-  margin: 0 12px 12px;
+  height: 2.2rem;
+  margin: 0 0.24rem 0.24rem;
 
   li {
     float: left;
     width: 20%;
     height: 50%;
 
-    div {
-      width: 28px;
-      height: 28px;
-      margin: 10px auto 5px;
+    .subnav-image {
+      width: 0.56rem;
+      height: 0.56rem;
+      margin: 0.2rem auto 0.1rem;
     }
 
-    p {
+    .subnav-title {
       font-size: 0.24rem;
       text-align: center;
       color: #222;
@@ -87,9 +87,9 @@ export default {
 
   for num in 0 1 2 3 4 5 6 7 8 9 {
     li:nth-child({num + 1}) {
-      >a>div {
-        background: url('../../../assets/images/un_ico_subnav2x@v7.152.png') no-repeat 0 (num * -28px);
-        background-size: 28px auto;
+      .subnav-image {
+        background: url('../../../assets/images/un_ico_subnav2x@v7.152.png') no-repeat 0 (num * -0.56rem);
+        background-size: 0.56rem auto;
       }
     }
   }

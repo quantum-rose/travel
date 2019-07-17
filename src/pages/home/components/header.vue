@@ -102,9 +102,9 @@ export default {
     input {
       flex: 1;
       padding: 0 0.28rem 0 0.56rem;
-      height: 32px;
-      line-height: 32px;
-      border-radius: 16px;
+      height: 0.64rem;
+      line-height: 0.64rem;
+      border-radius: 0.32rem;
     }
   }
 
@@ -120,17 +120,17 @@ export default {
       justify-content: center;
       align-items: center;
       width: 0.6rem;
-      height: 24px;
-      border-radius: 24px;
+      height: 0.48rem;
+      border-radius: 0.48rem;
       border: 0.02rem solid rgba(255, 255, 255, 0.2);
       box-sizing: border-box;
 
       span {
         display: inline-block;
-        margin: 0 2px;
-        width: 4px;
-        height: 4px;
-        border-radius: 2px;
+        margin: 0 0.04rem;
+        width: 0.08rem;
+        height: 0.08rem;
+        border-radius: 0.04rem;
       }
     }
   }

@@ -54,12 +54,12 @@ export default {
     position: absolute;
     z-index: 1000;
     top: -1.04rem;
-    left: 12px;
-    right: 12px;
+    left: 0.24rem;
+    right: 0.24rem;
     height: 1.04rem;
     padding: 0.12rem 0;
     background-color: #fff;
-    border-radius: 8px;
+    border-radius: 0.16rem;
     box-shadow: 0 0.04rem 0.04rem rgba(0, 0, 0, 0.2);
 
     for num in 0 1 2 3 4 {
@@ -73,11 +73,11 @@ export default {
           font-size: 0.24rem;
 
           div {
-            width: 40px;
-            height: 40px;
+            width: 0.8rem;
+            height: 0.8rem;
             margin: 0 auto;
-            background: url('../../../assets/images/home-fivemain-sprite2x@v7.15.png') no-repeat 0 (num * -40px);
-            background-size: 40px auto;
+            background: url('../../../assets/images/home-fivemain-sprite2x@v7.15.png') no-repeat 0 (num * -0.8rem);
+            background-size: 0.8rem auto;
           }
 
           p {

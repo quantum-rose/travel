@@ -53,7 +53,7 @@ export default {
 .wrapper >>> .swiper-pagination-bullet-active {
   background-color: #fff;
   width: 0.32rem;
-  border-radius: 8px;
+  border-radius: 0.16rem;
 }
 
 .wrapper >>> .swiper-pagination-bullet {
@@ -72,16 +72,14 @@ export default {
     .swiper-img {
       width: 100%;
       margin-top: -0.64rem;
-      border-bottom-left-radius: 50% 0.6rem;
-      border-bottom-right-radius: 50% 0.6rem;
     }
 
     .swiper-pagination {
       position: absolute;
       width: auto;
-      right: 0.16rem;
+      right: 0.24rem;
       left: auto;
-      bottom: 1.16rem;
+      bottom: 15vw;
     }
   }
 
@@ -89,8 +87,21 @@ export default {
     content: '';
     z-index: 1000;
     position: absolute;
+    top: 0;
     width: 100%;
-    height: 44px;
+    height: 0.88rem;
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+  }
+
+  .swiper::after {
+    content: '';
+    z-index: 1000;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 0.88rem;
+    box-shadow: 0 0.6rem 0 0.6rem #fff;
+    border-bottom-left-radius: 50% 0.6rem;
+    border-bottom-right-radius: 50% 0.6rem;
   }
 }</style>
