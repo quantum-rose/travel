@@ -83,6 +83,8 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+@import '../../../assets/style/varibles.styl';
+
 .header {
   display: flex;
   position: fixed;
@@ -95,7 +97,7 @@ export default {
 
   .header-left {
     float: left;
-    width: 1.3rem;
+    padding: 0 0.21rem;
 
     .iconfont {
       font-size: 0.24rem;
@@ -110,7 +112,7 @@ export default {
     .iconfont {
       position: absolute;
       margin-left: 0.12rem;
-      color: #00bcd4;
+      color: $themeColor;
     }
 
     input {
@@ -125,7 +127,7 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 1rem;
+    padding: 0 0.2rem;
 
     .circle {
       display: flex;

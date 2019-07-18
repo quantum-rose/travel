@@ -46,7 +46,7 @@ export default {
 }
 
 .slide-up-enter-active {
-  animation: slide 0.3s;
+  animation: slide 0.45s;
 }
 
 .slide-down-leave-active {
