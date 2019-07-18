@@ -26,6 +26,9 @@ export default {
   mounted() {
     window.onscroll = this.handleScroll
   },
+  props: {
+    scrollY: Number
+  },
   data() {
     return {
       headerStyle: {
@@ -43,27 +46,37 @@ export default {
       },
       cityStyle: {
         color: 'rgb(255,255,255)'
-      }
+      },
+      // 滚动区域y坐标为-90时的样式是否已设置的标识
+      flag: false
     }
   },
-  methods: {
-    handleScroll() {
-      let scrollY = window.scrollY
-      if (window.scrollY > 90) {
-        scrollY = 90
-        this.headerStyle.boxShadow = '0 0.04rem 0.04rem rgba(0,0,0,.2)'
+  watch: {
+    scrollY(y) {
+      if (y <= -90) {
+        // y坐标已超过-90，且标志变量为真，直接退出，避免无意义的运算
+        if (this.flag) return
+        // y坐标已超过-90，但是标志变量不为真，说明-90时的样式未设置，重置y为-90
+        y = -90
+        // y坐标超过-90时为头部设置下方阴影
+        this.headerStyle.boxShadow = '0 0.04rem 0.04rem rgba(0,0,0,.1)'
       } else {
+        // y坐标不足-90，恢复标志变量，取消头部阴影
+        this.flag = false
         this.headerStyle.boxShadow = 'none'
       }
-      this.headerStyle.backgroundColor = `rgba(255,255,255,${scrollY / 90})`
-      let rgb = 255 - (scrollY / 1350) * 255
+      // 根据y坐标的值，实时设置头部样式，实现渐变效果
+      this.headerStyle.backgroundColor = `rgba(255,255,255,${y / -90})`
+      let rgb = 255 + (y / 1350) * 255
       let color = `rgb(${rgb},${rgb},${rgb})`
       this.searchStyle.backgroundColor = color
       this.circleStyle.borderColor = color
-      rgb = 255 - (scrollY / 150) * 255
+      rgb = 255 + (y / 150) * 255
       color = `rgb(${rgb},${rgb},${rgb})`
       this.cityStyle.color = color
       this.pointStyle.backgroundColor = color
+      // 本次样式设置完毕后，如果y坐标为-90，改变标识变量
+      if (y === -90) this.flag = true
     }
   }
 }

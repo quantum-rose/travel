@@ -34,7 +34,6 @@ export default {
 }
 </script>
 
-
 <style lang="stylus" scoped>
 @keyframes slide {
   0% {
@@ -54,4 +53,3 @@ export default {
   animation: slide 0.3s reverse;
 }
 </style>
-
