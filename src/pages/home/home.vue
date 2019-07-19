@@ -1,7 +1,7 @@
 <template>
   <div>
     <home-header :scroll-y="scrollY" @change="flagChanged"></home-header>
-    <div class="scroll-wrapper" ref="homeScroll">
+    <div class="home-scroll" ref="homeScroll">
       <div class="content">
         <home-swiper></home-swiper>
         <home-local-nav></home-local-nav>
@@ -145,7 +145,7 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-.scroll-wrapper {
+.home-scroll {
   position: fixed;
   top: 0;
   bottom: 0;

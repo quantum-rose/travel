@@ -1,6 +1,7 @@
 <template>
   <div class="city">
-    <city-header></city-header>
+    <city-header :cityList="cityList"></city-header>
+    <city-tabbar></city-tabbar>
     <city-list :hotCities="hotCities" :cityList="cityList" :letter="letter"></city-list>
     <city-alphabet :cityList="cityList" @change="changeLetter"></city-alphabet>
   </div>
@@ -8,6 +9,7 @@
 
 <script>
 import cityHeader from './components/header'
+import cityTabbar from './components/tabbar'
 import cityList from './components/cityList'
 import cityAlphabet from './components/alphabet'
 
@@ -37,6 +39,7 @@ export default {
   },
   components: {
     cityHeader,
+    cityTabbar,
     cityList,
     cityAlphabet
   }

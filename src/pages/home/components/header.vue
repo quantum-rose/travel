@@ -94,8 +94,8 @@ export default {
 .header {
   display: flex;
   position: fixed;
-  top: 0;
   z-index: 1001;
+  top: 0;
   width: 100%;
   height: 0.88rem;
   line-height: 0.88rem;

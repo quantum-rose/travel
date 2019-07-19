@@ -86,8 +86,8 @@ export default {
 
     &::before {
       content: '';
-      z-index: 1000;
       position: absolute;
+      z-index: 1000;
       top: 0;
       width: 100%;
       height: 0.88rem;
@@ -96,8 +96,8 @@ export default {
 
     &::after {
       content: '';
-      z-index: 1000;
       position: absolute;
+      z-index: 1000;
       bottom: 0;
       width: 100%;
       height: 0.88rem;

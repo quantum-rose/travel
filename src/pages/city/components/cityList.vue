@@ -6,35 +6,35 @@
         <div class="sub-title">当前定位</div>
         <ul class="clearfix">
           <li>
-            <a href="javascript:;">
+            <button>
               <i class="iconfont">&#xe65e;</i> 郑州
-            </a>
+            </button>
           </li>
         </ul>
         <div class="sub-title">历史访问城市</div>
         <ul class="clearfix">
           <li>
-            <a href="javascript:;">郑州</a>
+            <button>郑州</button>
           </li>
           <li>
-            <a href="javascript:;">洛阳</a>
+            <button>洛阳</button>
           </li>
           <li>
-            <a href="javascript:;">上海</a>
+            <button>上海</button>
           </li>
         </ul>
         <div class="sub-title">热门城市</div>
         <ul class="clearfix">
           <li v-for="item in hotCities" :key="item.id">
-            <a href="javascript:;">{{item.name}}</a>
+            <button>{{item.name}}</button>
           </li>
         </ul>
       </div>
       <!-- 按拼音首字母排列的城市列表 -->
-      <div class="area" v-for="(item, key) in cityList" :key="key">
-        <div class="title" :ref="key">{{key}}</div>
-        <a href="javascript:;" v-for="entry in item" :key="entry.id">{{entry.name}}</a>
-      </div>
+      <ul class="area" v-for="(item, key) in cityList" :key="key">
+        <li class="title" :ref="key">{{key}}</li>
+        <li v-for="entry in item" :key="entry.id">{{entry.name}}</li>
+      </ul>
     </div>
   </div>
 </template>
@@ -52,7 +52,7 @@ export default {
   mounted() {
     this.cityScroll = new BScroll(this.$refs.cityScroll, {
       preventDefaultException: {
-        tagName: /^(INPUT|TEXTAREA|BUTTON|SELECT|A)$/
+        tagName: /^(INPUT|TEXTAREA|BUTTON|SELECT|LI)$/
       }
     })
   },
@@ -75,14 +75,17 @@ export default {
 
 .city-scroll {
   position: absolute;
+  z-index: 1000;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 1000;
   margin-top: 1.68rem;
+  background-color: #f8f8f8;
 
   .content {
+    background-color: #fff;
+
     .area {
       .title {
         padding-left: 0.4rem;
@@ -111,8 +114,9 @@ export default {
           padding: 0 0.1rem 0.2rem 0.1rem;
           box-sizing: border-box;
 
-          >a {
+          >button {
             flex: 1;
+            background-color: #fff;
             line-height: 0.64rem;
             text-align: center;
             box-sizing: border-box;
@@ -131,8 +135,7 @@ export default {
         }
       }
 
-      >a {
-        display: block;
+      >li {
         padding: 0 0.4rem;
         line-height: 0.84rem;
 
@@ -140,7 +143,7 @@ export default {
           background-color: #f8f8f8;
         }
 
-        &+a::before {
+        &:nth-child(n+3)::before {
           content: '';
           display: block;
           margin-bottom: -0.01rem;
