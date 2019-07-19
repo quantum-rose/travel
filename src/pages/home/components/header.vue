@@ -53,16 +53,18 @@ export default {
   },
   watch: {
     scrollY(y) {
+      // y坐标超过-90
       if (y <= -90) {
-        // y坐标已超过-90，且标志变量为真，直接退出，避免无意义的运算
-        if (this.flag) return
-        // y坐标已超过-90，但是标志变量不为真，说明-90时的样式未设置，重置y为-90
+        // 重置y为-90
         y = -90
-        // y坐标超过-90时为头部设置下方阴影
+        // 为头部设置下方阴影
         this.headerStyle.boxShadow = '0 0.04rem 0.04rem rgba(0,0,0,.1)'
-      } else {
-        // y坐标不足-90，恢复标志变量，取消头部阴影
+      }
+      // y坐标不足-90
+      else {
+        // 恢复标识变量
         this.flag = false
+        // 取消头部阴影
         this.headerStyle.boxShadow = 'none'
       }
       // 根据y坐标的值，实时设置头部样式，实现渐变效果
@@ -77,6 +79,10 @@ export default {
       this.pointStyle.backgroundColor = color
       // 本次样式设置完毕后，如果y坐标为-90，改变标识变量
       if (y === -90) this.flag = true
+    },
+    // 标识变量改变后，向外触发事件，传递标志变量的值
+    flag(val) {
+      this.$emit('change', val)
     }
   }
 }

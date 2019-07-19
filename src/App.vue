@@ -28,7 +28,6 @@ export default {
         this.mode = ''
         this.transitionName = ''
       }
-      console.log(to, from)
     }
   }
 }

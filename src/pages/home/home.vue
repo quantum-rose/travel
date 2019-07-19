@@ -1,12 +1,90 @@
 <template>
   <div>
-    <home-header :scroll-y="scrollY"></home-header>
+    <home-header :scroll-y="scrollY" @change="flagChanged"></home-header>
     <div class="scroll-wrapper" ref="homeScroll">
       <div class="content">
         <home-swiper></home-swiper>
         <home-local-nav></home-local-nav>
         <home-grid-nav></home-grid-nav>
         <home-subnav></home-subnav>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
+        <div>c</div>
       </div>
     </div>
   </div>
@@ -23,7 +101,7 @@ import homeSubnav from './components/subnav'
 export default {
   name: 'home',
   mounted() {
-    let homeScroll = new BScroll(this.$refs.homeScroll, {
+    this.homeScroll = new BScroll(this.$refs.homeScroll, {
       probeType: 3,
       bounce: {
         top: false,
@@ -32,16 +110,28 @@ export default {
         right: false
       }
     })
-    homeScroll.on('scroll', this.handleScroll)
+    this.homeScroll.on('scroll', this.handleScroll)
+  },
+  updated() {
+    // 组件更新后刷新betterScroll
+    this.homeScroll.refresh()
   },
   data() {
     return {
-      scrollY: 0
+      scrollY: 0,
+      // 滚动区域y坐标为-90时的样式是否已设置的标识
+      flag: false
     }
   },
   methods: {
     handleScroll({ y }) {
-      this.scrollY = y
+      // 如果y坐标超过-90且标识变量为真，说明头部渐变已完成，直接退出，避免触发无意义的updated生命周期钩子
+      if (y <= -90 && this.flag) return
+      this.scrollY = Math.ceil(y)
+    },
+    // 感知头部子组件flag变化的函数，并保存
+    flagChanged(flag) {
+      this.flag = flag
     }
   },
   components: {

@@ -2,7 +2,7 @@
   <div class="city-scroll" ref="cityScroll">
     <div class="content">
       <div class="area">
-        <div class="title active">#</div>
+        <div class="title active" ref="#">#</div>
         <div class="sub-title">当前定位</div>
         <ul class="clearfix">
           <li>
@@ -32,7 +32,7 @@
       </div>
       <!-- 按拼音首字母排列的城市列表 -->
       <div class="area" v-for="(item, key) in cityList" :key="key">
-        <div class="title">{{key}}</div>
+        <div class="title" :ref="key">{{key}}</div>
         <a href="javascript:;" v-for="entry in item" :key="entry.id">{{entry.name}}</a>
       </div>
     </div>
@@ -46,17 +46,26 @@ export default {
   name: 'city-list',
   props: {
     hotCities: Array,
-    cityList: Object
+    cityList: Object,
+    letter: String
   },
   mounted() {
-    let cityScroll = new BScroll(this.$refs.cityScroll, {
+    this.cityScroll = new BScroll(this.$refs.cityScroll, {
       preventDefaultException: {
         tagName: /^(INPUT|TEXTAREA|BUTTON|SELECT|A)$/
       }
     })
   },
-  methods: {
-    heightLightBorder() {}
+  updated() {
+    // 组件更新后刷新betterScroll
+    this.cityScroll.refresh()
+  },
+  watch: {
+    letter(val) {
+      this.cityScroll.scrollToElement(
+        this.$refs[this.letter][0] || this.$refs[this.letter]
+      )
+    }
   }
 }
 </script>
@@ -134,7 +143,8 @@ export default {
         &+a::before {
           content: '';
           display: block;
-          border-top: 0.01rem solid #eee;
+          margin-bottom: -0.01rem;
+          border-bottom: 0.01rem solid #eee;
         }
       }
     }

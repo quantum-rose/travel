@@ -1,13 +1,15 @@
 <template>
   <div class="city">
     <city-header></city-header>
-    <city-list :hotCities="hotCities" :cityList="cityList"></city-list>
+    <city-list :hotCities="hotCities" :cityList="cityList" :letter="letter"></city-list>
+    <city-alphabet :cityList="cityList" @change="changeLetter"></city-alphabet>
   </div>
 </template>
 
 <script>
 import cityHeader from './components/header'
 import cityList from './components/cityList'
+import cityAlphabet from './components/alphabet'
 
 export default {
   name: 'city',
@@ -17,7 +19,8 @@ export default {
   data() {
     return {
       hotCities: [],
-      cityList: {}
+      cityList: {},
+      letter: ''
     }
   },
   methods: {
@@ -27,11 +30,15 @@ export default {
       const data = result.data
       this.hotCities = data.hotCities
       this.cityList = data.cities
+    },
+    changeLetter(val) {
+      this.letter = val
     }
   },
   components: {
     cityHeader,
-    cityList
+    cityList,
+    cityAlphabet
   }
 }
 </script>
