@@ -3,10 +3,10 @@
     <home-header :scroll-y="scrollY" @change="flagChanged"></home-header>
     <div class="home-scroll" ref="homeScroll">
       <div class="content">
-        <home-swiper></home-swiper>
-        <home-local-nav></home-local-nav>
-        <home-grid-nav></home-grid-nav>
-        <home-subnav></home-subnav>
+        <home-swiper :swiperImages="swiperImages"></home-swiper>
+        <home-local-nav :localNavs="localNavs"></home-local-nav>
+        <home-grid-nav :gridNavs="gridNavs"></home-grid-nav>
+        <home-subnav :subnavs="subnavs"></home-subnav>
         <div>c</div>
         <div>c</div>
         <div>c</div>
@@ -92,6 +92,7 @@
 
 <script>
 import BScroll from 'better-scroll'
+import { mapState } from 'vuex'
 import homeHeader from './components/header'
 import homeSwiper from './components/swiper'
 import homeLocalNav from './components/localNav'
@@ -100,7 +101,11 @@ import homeSubnav from './components/subnav'
 
 export default {
   name: 'home',
+  created() {
+    this.getHomeData()
+  },
   mounted() {
+    // 创建better-scroll实例
     this.homeScroll = new BScroll(this.$refs.homeScroll, {
       probeType: 3,
       bounce: {
@@ -118,12 +123,38 @@ export default {
   },
   data() {
     return {
+      // 轮播图
+      swiperImages: [],
+      localNavs: [],
+      gridNavs: [],
+      subnavs: [],
+      // 滚动区域的y坐标
       scrollY: 0,
       // 滚动区域y坐标为-90时的样式是否已设置的标识
       flag: false
     }
   },
+  computed: {
+    ...mapState(['currentCity'])
+  },
+  watch: {
+    currentCity() {
+      this.getHomeData()
+    }
+  },
   methods: {
+    // 获取首页数据
+    async getHomeData() {
+      const { data: result } = await this.$http.get(
+        'data/home.json?cityid=' + this.currentCity.id
+      )
+      if (!result.ret) return
+      const data = result.data
+      this.swiperImages = data.swiperImages
+      this.localNavs = data.localNavs
+      this.gridNavs = data.gridNavs
+      this.subnavs = data.subnavs
+    },
     handleScroll({ y }) {
       // 如果y坐标超过-90且标识变量为真，说明头部渐变已完成，直接退出，避免触发无意义的updated生命周期钩子
       if (y <= -90 && this.flag) return

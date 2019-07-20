@@ -4,7 +4,7 @@
       <li v-for="item in localNavs" :key="item.id">
         <a href="javascript:;">
           <div></div>
-          <p>{{item.name}}</p>
+          <p>{{item.title}}</p>
         </a>
       </li>
     </ul>
@@ -14,32 +14,8 @@
 <script>
 export default {
   name: 'home-local-nav',
-  data() {
-    return {
-      // 模拟 Ajax 数据
-      localNavs: [
-        {
-          id: 101,
-          name: '攻略·景点'
-        },
-        {
-          id: 102,
-          name: '门票·玩乐'
-        },
-        {
-          id: 103,
-          name: '美食林'
-        },
-        {
-          id: 104,
-          name: '周边游'
-        },
-        {
-          id: 105,
-          name: '一日游'
-        }
-      ]
-    }
+  props: {
+    localNavs: Array
   }
 }
 </script>
@@ -77,7 +53,7 @@ export default {
             width: 0.8rem;
             height: 0.8rem;
             margin: 0 auto;
-            background: url('../../../assets/images/home-fivemain-sprite2x@v7.15.png') no-repeat 0 (num * -0.8rem);
+            background: url('~images/home-fivemain-sprite2x@v7.15.png') no-repeat 0 (num * -0.8rem);
             background-size: 0.8rem auto;
           }
         }

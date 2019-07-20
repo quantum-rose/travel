@@ -1,12 +1,5 @@
 <template>
   <div class="wrapper" :style="wrapperStyle">
-    <!-- 结果显示条件：输入框中有非空值 -->
-    <div class="result-scroll" ref="resultScroll" v-show="keyword">
-      <ul class="result">
-        <img v-if="noResult" src="../../../assets/images/no-city-min.png" />
-        <li v-for="item in result" :key="item.id">{{item.name}}</li>
-      </ul>
-    </div>
     <div class="header">
       <div class="close" v-show="!isFocus">
         <router-link to="/">
@@ -24,11 +17,19 @@
         />
       </div>
     </div>
+    <!-- 结果显示条件：输入框中有非空值 -->
+    <div class="result-scroll" ref="resultScroll" v-show="keyword">
+      <ul class="result">
+        <img v-if="noResult" src="~images/no-city-min.png" />
+        <li v-for="item in result" :key="item.id" @click="chooseCity(item)">{{item.name}}</li>
+      </ul>
+    </div>
   </div>
 </template>
 
 <script>
 import BScroll from 'better-scroll'
+import { mapMutations } from 'vuex'
 
 export default {
   name: 'city-header',
@@ -55,6 +56,7 @@ export default {
     }
   },
   computed: {
+    // 搜索结果为空的标识
     noResult() {
       return this.keyword && !this.result.length
     }
@@ -86,7 +88,7 @@ export default {
   methods: {
     // 输入框获得焦点时
     handleFocus() {
-      // 使包装纸扩大至全屏，屏蔽下方的元素，滚动区域也会随父元素扩大
+      // 使包装纸扩大至全屏，成为半透明的遮罩层，滚动区域也会随父元素扩大
       this.wrapperStyle = 'bottom:0;'
       this.isFocus = true
     },
@@ -97,13 +99,19 @@ export default {
         this.wrapperStyle = ''
         this.isFocus = false
       }
-    }
+    },
+    // 点击选择城市
+    chooseCity(city) {
+      this.changeCurrentCity(city)
+      this.$router.push('/')
+    },
+    ...mapMutations(['changeCurrentCity'])
   }
 }
 </script>
 
 <style lang="stylus" scoped>
-@import '../../../assets/style/varibles.styl';
+@import '~styles/varibles.styl';
 
 .wrapper {
   position: absolute;
@@ -115,7 +123,7 @@ export default {
 
   .header {
     position: relative;
-    z-index: 1030;
+    z-index: 1040;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -169,7 +177,8 @@ export default {
       z-index: 1040;
       left: 0;
       right: 0;
-      border-bottom: 0.02rem solid #eee;
+      height: 0.02rem;
+      background-color: #eee;
     }
 
     >ul {
@@ -186,15 +195,16 @@ export default {
         &::after {
           content: '';
           display: block;
+          height: 0.01rem;
           margin-bottom: -0.01rem;
-          border-bottom: 0.01rem solid #eee;
+          background-color: #eee;
         }
       }
 
       img {
-        display block
-        margin  0 auto 
-        width 50%
+        display: block;
+        margin: 0 auto;
+        width: 50%;
       }
     }
   }

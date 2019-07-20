@@ -1,9 +1,9 @@
 <template>
   <div class="grid-nav">
-    <div v-for="entry in gridNavs" :key="entry.id" :class="entry.name">
+    <div v-for="entry in gridNavs" :key="entry.id" :class="entry.title">
       <a v-for="item in entry.children" :key="item.id" href="javascript:;">
         <div>
-          <span v-if="item.name" class="name">{{item.name}}</span>
+          <span v-if="item.title" class="title">{{item.title}}</span>
           <span v-if="item.hot" class="hot">{{item.hot}}</span>
           <span v-if="item.tag" class="tag">{{item.tag}}</span>
         </div>
@@ -15,78 +15,8 @@
 <script>
 export default {
   name: 'home-grid-nav',
-  data() {
-    return {
-      // 模拟 Ajax 数据
-      gridNavs: [
-        {
-          id: 11,
-          name: 'grid-nav-hotel',
-          children: [
-            {
-              id: 101,
-              name: '酒店'
-            },
-            {
-              id: 102,
-              name: '民宿·客栈',
-              tag: '大促'
-            },
-            {
-              id: 103,
-              name: '机票/火车票+酒店',
-              hot: '方便又便宜'
-            }
-          ]
-        },
-        {
-          id: 12,
-          name: 'grid-nav-flight',
-          children: [
-            {
-              id: 201,
-              name: '机票'
-            },
-            {
-              id: 202,
-              name: '火车票',
-              tag: '暑运'
-            },
-            {
-              id: 203,
-              name: '汽车·船票'
-            },
-            {
-              id: 204,
-              name: '打车·租车'
-            }
-          ]
-        },
-        {
-          id: 13,
-          name: 'grid-nav-travel',
-          children: [
-            {
-              id: 301,
-              name: '旅游',
-              tag: '678月节'
-            },
-            {
-              id: 302,
-              name: '高铁游'
-            },
-            {
-              id: 303,
-              name: '邮轮游'
-            },
-            {
-              id: 304,
-              name: '定制游'
-            }
-          ]
-        }
-      ]
-    }
+  props: {
+    gridNavs: Array
   }
 }
 </script>
@@ -143,7 +73,7 @@ export default {
     }
 
     a:nth-child(1) {
-      .name {
+      .title {
         padding-left: 0.24rem;
       }
     }
@@ -171,11 +101,11 @@ export default {
     background: linear-gradient(to right, #fa5956, #fb8650 54%);
 
     a:nth-child(1) {
-      background: url('../../../assets/images/grid-nav-items-hotel@v7.15.png') no-repeat;
+      background: url('~images/grid-nav-items-hotel@v7.15.png') no-repeat;
     }
 
     a:nth-child(2) {
-      background: url('../../../assets/images/grid-nav-items-minsu@v7.15.png') no-repeat;
+      background: url('~images/grid-nav-items-minsu@v7.15.png') no-repeat;
     }
 
     a:nth-child(3) {
@@ -184,11 +114,11 @@ export default {
       background: linear-gradient(to right, #ffbc49, #ffd252);
 
       div {
-        background: url('../../../assets/images/grid-nav-items-jhj@v7.15.png') no-repeat;
+        background: url('~images/grid-nav-items-jhj@v7.15.png') no-repeat;
         background-size: 1.73rem auto;
         background-position: right bottom;
 
-        .name {
+        .title {
           color: #a05416;
         }
       }
@@ -199,11 +129,11 @@ export default {
     background: linear-gradient(to right, #4b8fed, #53bced);
 
     a:nth-child(1) {
-      background: url('../../../assets/images/grid-nav-items-flight@v7.15.png') no-repeat;
+      background: url('~images/grid-nav-items-flight@v7.15.png') no-repeat;
     }
 
     a:nth-child(2) {
-      background: url('../../../assets/images/grid-nav-items-train.png') no-repeat;
+      background: url('~images/grid-nav-items-train.png') no-repeat;
     }
   }
 
@@ -211,11 +141,11 @@ export default {
     background: linear-gradient(to right, #34c2aa, #6cd557);
 
     a:nth-child(1) {
-      background: url('../../../assets/images/grid-nav-items-travel@v7.15.png') no-repeat;
+      background: url('~images/grid-nav-items-travel@v7.15.png') no-repeat;
     }
 
     a:nth-child(2) {
-      background: url('../../../assets/images/grid-nav-items-dingzhi@v7.15.png') no-repeat;
+      background: url('~images/grid-nav-items-dingzhi@v7.15.png') no-repeat;
     }
   }
 

@@ -16,7 +16,7 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-@import '../../../assets/style/varibles.styl';
+@import '~styles/varibles.styl';
 
 .tab-bar {
   position: absolute;

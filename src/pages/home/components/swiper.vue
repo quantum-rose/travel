@@ -14,6 +14,9 @@
 <script>
 export default {
   name: 'home-swiper',
+  props: {
+    swiperImages: Array
+  },
   data() {
     return {
       // 轮播图配置
@@ -22,30 +25,7 @@ export default {
         loop: true,
         autoplay: 3000,
         speed: 200
-      },
-      // 模拟 Ajax 数据
-      swiperImages: [
-        {
-          id: 101,
-          url: require('../../../assets/images/zg0516000000zifq4FC3C.jpg')
-        },
-        {
-          id: 102,
-          url: require('../../../assets/images/zg0a15000000ypf1tBC70.jpg')
-        },
-        {
-          id: 103,
-          url: require('../../../assets/images/zg0e15000000yqzweE43E.jpg')
-        },
-        {
-          id: 104,
-          url: require('../../../assets/images/zg0r16000000yrvpo1109.jpg')
-        },
-        {
-          id: 105,
-          url: require('../../../assets/images/zg0r16000000zx6hb0CB8.jpg')
-        }
-      ]
+      }
     }
   }
 }
@@ -67,6 +47,7 @@ export default {
   height: 0;
   overflow: hidden;
   padding-bottom: 51.2%;
+  background-color: #eee;
 
   .swiper {
     position: relative;

@@ -2,8 +2,8 @@
   <div class="header" :style="headerStyle">
     <div class="header-left">
       <router-link to="/city" :style="cityStyle">
-        郑州
-        <i class="iconfont">&#xe62d;</i>
+        <div class="city">{{currentCity.name}}</div>
+        <i class="iconfont">&nbsp;&#xe62d;</i>
       </router-link>
     </div>
     <div class="search">
@@ -21,6 +21,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   name: 'home-header',
   mounted() {
@@ -51,6 +53,10 @@ export default {
       flag: false
     }
   },
+  computed: {
+    // 当前选择的城市
+    ...mapState(['currentCity'])
+  },
   watch: {
     scrollY(y) {
       // y坐标超过-90
@@ -59,12 +65,9 @@ export default {
         y = -90
         // 为头部设置下方阴影
         this.headerStyle.boxShadow = '0 0.04rem 0.04rem rgba(0,0,0,.1)'
-      }
-      // y坐标不足-90
-      else {
-        // 恢复标识变量
+      } else {
+        // y坐标不足-90，恢复标识变量、取消头部阴影
         this.flag = false
-        // 取消头部阴影
         this.headerStyle.boxShadow = 'none'
       }
       // 根据y坐标的值，实时设置头部样式，实现渐变效果
@@ -89,7 +92,8 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-@import '../../../assets/style/varibles.styl';
+@import '~styles/varibles.styl';
+@import '~styles/mixins.styl';
 
 .header {
   display: flex;
@@ -102,11 +106,19 @@ export default {
   text-align: center;
 
   .header-left {
-    float: left;
     padding: 0 0.21rem;
 
-    .iconfont {
-      font-size: 0.24rem;
+    a {
+      display: flex;
+
+      .city {
+        max-width: 4em;
+        ellipsis();
+      }
+
+      .iconfont {
+        font-size: 0.24rem;
+      }
     }
   }
 

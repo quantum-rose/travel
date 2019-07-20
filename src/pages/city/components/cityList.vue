@@ -26,14 +26,14 @@
         <div class="sub-title">热门城市</div>
         <ul class="clearfix">
           <li v-for="item in hotCities" :key="item.id">
-            <button>{{item.name}}</button>
+            <button @click="chooseCity(item)">{{item.name}}</button>
           </li>
         </ul>
       </div>
       <!-- 按拼音首字母排列的城市列表 -->
       <ul class="area" v-for="(item, key) in cityList" :key="key">
         <li class="title" :ref="key">{{key}}</li>
-        <li v-for="entry in item" :key="entry.id">{{entry.name}}</li>
+        <li v-for="entry in item" :key="entry.id" @click="chooseCity(entry)">{{entry.name}}</li>
       </ul>
     </div>
   </div>
@@ -41,12 +41,16 @@
 
 <script>
 import BScroll from 'better-scroll'
+import { mapMutations } from 'vuex'
 
 export default {
   name: 'city-list',
   props: {
+    // 热门城市列表
     hotCities: Array,
+    // 所有城市列表
     cityList: Object,
+    // 城市拼音首字母，用于快速定位
     letter: String
   },
   mounted() {
@@ -61,17 +65,26 @@ export default {
     this.cityScroll.refresh()
   },
   watch: {
+    // 监听字母的变化，滚动页面到指定位置
     letter(val) {
       this.cityScroll.scrollToElement(
         this.$refs[this.letter][0] || this.$refs[this.letter]
       )
     }
+  },
+  methods: {
+    // 点击选择城市
+    chooseCity(city) {
+      this.changeCurrentCity(city)
+      this.$router.push('/')
+    },
+    ...mapMutations(['changeCurrentCity'])
   }
 }
 </script>
 
 <style lang="stylus" scoped>
-@import '../../../assets/style/varibles.styl';
+@import '~styles/varibles.styl';
 
 .city-scroll {
   position: absolute;
@@ -139,15 +152,16 @@ export default {
         padding: 0 0.4rem;
         line-height: 0.84rem;
 
-        &:active {
+        +li:active {
           background-color: #f8f8f8;
         }
 
         &:nth-child(n+3)::before {
           content: '';
           display: block;
+          height: 0.01rem;
           margin-bottom: -0.01rem;
-          border-bottom: 0.01rem solid #eee;
+          background-color: #eee;
         }
       }
     }
