@@ -1,5 +1,10 @@
 <template>
-  <better-scroll class="city-scroll" ref="cityScroll" :options="scrollOption">
+  <better-scroll
+    class="city-scroll"
+    ref="cityScroll"
+    :options="scrollOption"
+    @scroll="handleScroll"
+  >
     <div class="content">
       <div class="area">
         <div class="title active" ref="#">#</div>
@@ -36,6 +41,7 @@
         <li v-for="entry in item" :key="entry.id" @click="chooseCity(entry)">{{entry.name}}</li>
       </ul>
     </div>
+    <div class="sticky" v-show="isScrolled" :style="stickyTop">{{currentTitle}}</div>
   </better-scroll>
 </template>
 
@@ -52,20 +58,79 @@ export default {
     // 城市拼音首字母，用于快速定位
     letter: String
   },
-  updated() {
-    this.$refs.cityScroll.refresh()
-  },
   data() {
     return {
       // better-scroll配置
       scrollOption: {
+        probeType: 3,
         preventDefaultException: {
           tagName: /^(INPUT|TEXTAREA|BUTTON|SELECT|LI)$/
         }
+      },
+      // 滚动区域的y坐标
+      scrollY: 0,
+      // 每个字母标题的offsetTop
+      titlePositionArr: [],
+      currentTitle: '',
+      stickyTop: 'top:0'
+    }
+  },
+  computed: {
+    // 页面是否已向上滚动的标识
+    isScrolled() {
+      return this.scrollY < 0
+    },
+    // 提取字母列表
+    letterArr() {
+      const arr = []
+      for (let key in this.cityList) {
+        arr.push(key)
       }
+      return arr
     }
   },
   watch: {
+    // 监听y坐标的变化，实时改变sticky元素的内容，实现类似粘性定位效果
+    scrollY(y) {
+      // 先获取每一个字母标题的offsetTop，数组为空时才执行
+      if (this.titlePositionArr.length === 0) {
+        this.titlePositionArr.push({
+          letter: '#',
+          offsetTop: this.$refs['#'].offsetTop
+        })
+        this.letterArr.forEach(item => {
+          // 采用向头部插入新元素的方式，即得到一个逆序的字母表，因为这样更方便，代码相关row111,row123
+          this.titlePositionArr.unshift({
+            letter: item,
+            offsetTop: this.$refs[item][0].offsetTop
+          })
+        })
+      }
+      // 用于实现标题切换时的特效，24(row111)为标题的高度
+      let temp = this.titlePositionArr.find(
+        item => y + item.offsetTop <= 24 && y + item.offsetTop > 0
+      )
+      if (temp) {
+        // 如果有符合条件的结果，改变sticky元素的top值
+        let offsetTop = y + temp.offsetTop - 24
+        this.stickyTop = `top:${offsetTop}px;`
+      } else {
+        // 没有则重置
+        this.stickyTop = 'top:0;'
+      }
+      // 用于更改sticky元素的内容，即根据不同情况显示不同的字母
+      /**
+       * 随着页面向上滚动，y会逐渐变小，或者说y的绝对值-y会越来越大
+       * 而find的特性是返回第一个符合条件的元素
+       * 所以我们的条件应该是找到第一个符合offsetTop值小于-y的项
+       * 所以数组中每一项的offsetTop值应该按降序排列
+       * 因此row103采用逆序的方法
+       */
+      let currentTitle = this.titlePositionArr.find(
+        item => -y >= item.offsetTop
+      )
+      if (currentTitle) this.currentTitle = currentTitle.letter
+    },
     // 监听字母的变化，滚动页面到指定位置
     letter(val) {
       this.$refs.cityScroll.scrollToElement(
@@ -74,6 +139,10 @@ export default {
     }
   },
   methods: {
+    // 向上取整，保存y坐标
+    handleScroll({ y }) {
+      this.scrollY = Math.ceil(y)
+    },
     // 点击选择城市
     chooseCity(city) {
       this.changeCurrentCity(city)
@@ -106,10 +175,6 @@ export default {
         line-height: 0.48rem;
         background-color: #eee;
         font-size: 0.24rem;
-
-        &.active {
-          color: $themeColor;
-        }
       }
 
       .sub-title {
@@ -166,6 +231,18 @@ export default {
         }
       }
     }
+  }
+
+  .sticky {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding-left: 0.4rem;
+    line-height: 0.48rem;
+    background-color: #eee;
+    font-size: 0.24rem;
+    color: $themeColor;
   }
 }
 </style>

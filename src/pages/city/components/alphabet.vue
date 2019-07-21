@@ -6,7 +6,7 @@
       :ref="item"
       @click="handleClick"
       @touchstart="handleTouchStart"
-      @touchmove="handleTouchMove"
+      @touchmove.prevent="handleTouchMove"
       @touchend="handleTouchEnd"
     >{{item}}</li>
   </ul>
@@ -18,22 +18,19 @@ export default {
   props: {
     cityList: Object
   },
-  updated() {
-    // 组件更新后，计算#的offsetTop
-    this.startY = this.$refs['#'][0].offsetTop
-    // 计算每一个字母的高度
-    this.letterHeight = this.$refs['#'][0].offsetHeight
+  mounted() {
+    this.sign = this.$refs['#'][0]
   },
   data() {
     return {
       // 触摸开始的标识
       isTouched: false,
-      // #的offsetTop
-      startY: 0,
-      // 字母的高度
-      letterHeight: 0,
       // 触摸的字母索引
-      touchIndex: 0
+      touchIndex: 0,
+      // 字母列表#
+      sign: null,
+      // 节流定时器
+      timer: null
     }
   },
   computed: {
@@ -64,12 +61,15 @@ export default {
       this.isTouched = true
     },
     handleTouchMove(e) {
-      e.preventDefault()
-      if (this.isTouched) {
-        this.touchIndex = Math.floor(
-          (e.touches[0].clientY - this.startY) / this.letterHeight
-        )
-      }
+      if (this.timer) clearTimeout(this.timer)
+      this.timer = setTimeout(() => {
+        if (this.isTouched) {
+          let sign = this.sign
+          this.touchIndex = Math.floor(
+            (e.touches[0].clientY - sign.offsetTop) / sign.offsetHeight
+          )
+        }
+      }, 16)
     },
     handleTouchEnd() {
       this.isTouched = false
