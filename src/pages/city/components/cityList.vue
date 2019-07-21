@@ -1,5 +1,5 @@
 <template>
-  <div class="city-scroll" ref="cityScroll">
+  <better-scroll class="city-scroll" ref="cityScroll" :options="scrollOption">
     <div class="content">
       <div class="area">
         <div class="title active" ref="#">#</div>
@@ -36,11 +36,10 @@
         <li v-for="entry in item" :key="entry.id" @click="chooseCity(entry)">{{entry.name}}</li>
       </ul>
     </div>
-  </div>
+  </better-scroll>
 </template>
 
 <script>
-import BScroll from 'better-scroll'
 import { mapMutations } from 'vuex'
 
 export default {
@@ -53,21 +52,23 @@ export default {
     // 城市拼音首字母，用于快速定位
     letter: String
   },
-  mounted() {
-    this.cityScroll = new BScroll(this.$refs.cityScroll, {
-      preventDefaultException: {
-        tagName: /^(INPUT|TEXTAREA|BUTTON|SELECT|LI)$/
-      }
-    })
-  },
   updated() {
-    // 组件更新后刷新betterScroll
-    this.cityScroll.refresh()
+    this.$refs.cityScroll.refresh()
+  },
+  data() {
+    return {
+      // better-scroll配置
+      scrollOption: {
+        preventDefaultException: {
+          tagName: /^(INPUT|TEXTAREA|BUTTON|SELECT|LI)$/
+        }
+      }
+    }
   },
   watch: {
     // 监听字母的变化，滚动页面到指定位置
     letter(val) {
-      this.cityScroll.scrollToElement(
+      this.$refs.cityScroll.scrollToElement(
         this.$refs[this.letter][0] || this.$refs[this.letter]
       )
     }

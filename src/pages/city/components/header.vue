@@ -18,17 +18,21 @@
       </div>
     </div>
     <!-- 结果显示条件：输入框中有非空值 -->
-    <div class="result-scroll" ref="resultScroll" v-show="keyword">
+    <better-scroll
+      class="result-scroll"
+      ref="resultScroll"
+      :options="scrollOption"
+      v-show="keyword"
+    >
       <ul class="result">
         <img v-if="noResult" src="~images/no-city-min.png" />
         <li v-for="item in result" :key="item.id" @click="chooseCity(item)">{{item.name}}</li>
       </ul>
-    </div>
+    </better-scroll>
   </div>
 </template>
 
 <script>
-import BScroll from 'better-scroll'
 import { mapMutations } from 'vuex'
 
 export default {
@@ -36,15 +40,17 @@ export default {
   props: {
     cityList: Object
   },
-  mounted() {
-    this.resultScroll = new BScroll(this.$refs.resultScroll, {
-      preventDefaultException: {
-        tagName: /^(INPUT|TEXTAREA|BUTTON|SELECT|LI)$/
-      }
-    })
+  updated() {
+    this.$refs.resultScroll.refresh()
   },
   data() {
     return {
+      // better-scroll配置
+      scrollOption: {
+        preventDefaultException: {
+          tagName: /^(INPUT|TEXTAREA|BUTTON|SELECT|LI)$/
+        }
+      },
       // 输入的关键词
       keyword: '',
       // 输入框是否获得焦点

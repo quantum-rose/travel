@@ -1,97 +1,24 @@
 <template>
   <div>
     <home-header :scroll-y="scrollY" @change="flagChanged"></home-header>
-    <div class="home-scroll" ref="homeScroll">
+    <better-scroll
+      class="home-scroll"
+      :ref="'homeScroll'"
+      :options="scrollOption"
+      @scroll="handleScroll"
+    >
       <div class="content">
         <home-swiper :swiperImages="swiperImages"></home-swiper>
         <home-local-nav :localNavs="localNavs"></home-local-nav>
         <home-grid-nav :gridNavs="gridNavs"></home-grid-nav>
         <home-subnav :subnavs="subnavs"></home-subnav>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
-        <div>c</div>
+        <div :ref="'div'+i" v-for="(item, i) in Array(100)" :key="i">{{i}}</div>
       </div>
-    </div>
+    </better-scroll>
   </div>
 </template>
 
 <script>
-import BScroll from 'better-scroll'
 import { mapState } from 'vuex'
 import homeHeader from './components/header'
 import homeSwiper from './components/swiper'
@@ -104,30 +31,29 @@ export default {
   created() {
     this.getHomeData()
   },
-  mounted() {
-    // 创建better-scroll实例
-    this.homeScroll = new BScroll(this.$refs.homeScroll, {
-      probeType: 3,
-      bounce: {
-        top: false,
-        bottom: false,
-        left: false,
-        right: false
-      }
-    })
-    this.homeScroll.on('scroll', this.handleScroll)
-  },
   updated() {
-    // 组件更新后刷新betterScroll
-    this.homeScroll.refresh()
+    this.$refs.homeScroll.refresh()
   },
   data() {
     return {
-      // 轮播图
+      // 轮播图数据
       swiperImages: [],
+      // 本地导航数据
       localNavs: [],
+      // 格子导航数据
       gridNavs: [],
+      // 子导航数据
       subnavs: [],
+      // better-scroll配置
+      scrollOption: {
+        probeType: 3,
+        bounce: {
+          top: false,
+          bottom: false,
+          left: false,
+          right: false
+        }
+      },
       // 滚动区域的y坐标
       scrollY: 0,
       // 滚动区域y坐标为-90时的样式是否已设置的标识
@@ -182,9 +108,5 @@ export default {
   bottom: 0;
   left: 0;
   right: 0;
-
-  .content {
-    width: 100%;
-  }
 }
 </style>
