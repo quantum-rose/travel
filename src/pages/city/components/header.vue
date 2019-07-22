@@ -16,6 +16,7 @@
           @blur="handleBlur"
         />
       </div>
+      <div class="cancel" v-show="isFocus" @click="cancelSearch">取消</div>
     </div>
     <!-- 结果显示条件：输入框中有非空值 -->
     <better-scroll
@@ -42,6 +43,12 @@ export default {
   },
   updated() {
     this.$refs.resultScroll.refresh()
+  },
+  activated() {
+    // 组件激活时，重置一些变量，初始化
+    this.isFocus = false
+    this.keyword = ''
+    this.wrapperStyle = ''
   },
   data() {
     return {
@@ -106,10 +113,14 @@ export default {
         this.isFocus = false
       }
     },
+    // 点击取消
+    cancelSearch() {
+      this.keyword = ''
+      this.handleBlur()
+    },
     // 点击选择城市
     chooseCity(city) {
-      this.changeCurrentCity(city)
-      this.$router.push('/')
+      this.$emit('choose', city)
     },
     ...mapMutations(['changeCurrentCity'])
   }
@@ -165,6 +176,11 @@ export default {
         border-radius: 0.08rem;
         background-color: #eee;
       }
+    }
+
+    .cancel {
+      line-height: 0.56rem;
+      padding-right: 0.24rem;
     }
   }
 

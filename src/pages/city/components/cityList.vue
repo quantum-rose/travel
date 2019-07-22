@@ -11,21 +11,16 @@
         <div class="sub-title">当前定位</div>
         <ul class="clearfix">
           <li>
-            <button>
-              <i class="iconfont">&#xe65e;</i> 郑州
+            <button @click="chooseCity(currentCity)">
+              <i class="iconfont">&#xe65e;</i>
+              {{currentCity.name}}
             </button>
           </li>
         </ul>
         <div class="sub-title">历史访问城市</div>
         <ul class="clearfix">
-          <li>
-            <button>郑州</button>
-          </li>
-          <li>
-            <button>洛阳</button>
-          </li>
-          <li>
-            <button>上海</button>
+          <li v-for="item in historyCity" :key="item.id">
+            <button @click="chooseCity(item)">{{item.name}}</button>
           </li>
         </ul>
         <div class="sub-title">热门城市</div>
@@ -46,11 +41,13 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
+import { mapState } from 'vuex'
 
 export default {
   name: 'city-list',
   props: {
+    // 历史访问城市
+    historyCity: Array,
     // 热门城市列表
     hotCities: Array,
     // 所有城市列表
@@ -71,16 +68,20 @@ export default {
       scrollY: 0,
       // 每个字母标题的offsetTop
       titlePositionArr: [],
+      // 当前列表显示的标题字母
       currentTitle: '',
+      // sticky元素的top
       stickyTop: 'top:0'
     }
   },
   computed: {
+    // 当前选择的城市
+    ...mapState(['currentCity']),
     // 页面是否已向上滚动的标识
     isScrolled() {
       return this.scrollY < 0
     },
-    // 提取字母列表
+    // 提取字母列表，不包括#
     letterArr() {
       const arr = []
       for (let key in this.cityList) {
@@ -145,10 +146,8 @@ export default {
     },
     // 点击选择城市
     chooseCity(city) {
-      this.changeCurrentCity(city)
-      this.$router.push('/')
-    },
-    ...mapMutations(['changeCurrentCity'])
+      this.$emit('choose', city)
+    }
   }
 }
 </script>

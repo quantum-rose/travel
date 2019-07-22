@@ -8,7 +8,7 @@ try {
   if (localStorage.currentCity) {
     currentCity = JSON.parse(localStorage.currentCity)
   }
-} catch (e) {}
+} catch (error) {}
 
 export default {
   currentCity

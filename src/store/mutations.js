@@ -4,6 +4,6 @@ export default {
     state.currentCity = city
     try {
       localStorage.currentCity = JSON.stringify(city)
-    } catch (e) {}
+    } catch (error) {}
   }
 }
