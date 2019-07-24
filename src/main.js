@@ -10,6 +10,7 @@ import 'normalize.css'
 import 'swiper/dist/css/swiper.css'
 import './assets/fonts/iconfont.css'
 import './assets/styles/global.styl'
+import './assets/fonts/iconfont'
 
 Vue.use(VueAwesomeSwiper)
 Vue.use(BetterScroll)

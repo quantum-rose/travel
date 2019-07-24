@@ -82,7 +82,7 @@ export default {
       bottom: 0;
       width: 100%;
       height: 0.88rem;
-      box-shadow: 0 0.6rem 0 0.6rem #fff;
+      box-shadow: 0 0.6rem 0 0.6rem #f8f8f8;
       border-bottom-left-radius: 50% 0.6rem;
       border-bottom-right-radius: 50% 0.6rem;
     }

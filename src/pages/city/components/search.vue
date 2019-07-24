@@ -1,16 +1,16 @@
 <template>
-  <div class="wrapper" :style="wrapperStyle">
+  <div class="search" :style="searchStyle">
     <div class="header">
       <div class="close" v-show="!isFocus">
         <router-link to="/">
           <i class="iconfont">&#xe624;</i>
         </router-link>
       </div>
-      <div class="search">
+      <div class="input">
         <i class="iconfont">&#xe632;</i>
         <input
           v-model.trim="keyword"
-          type="text"
+          type="search"
           placeholder="搜索全球城市"
           @focus="handleFocus"
           @blur="handleBlur"
@@ -37,18 +37,15 @@
 import { mapMutations } from 'vuex'
 
 export default {
-  name: 'city-header',
+  name: 'city-search',
   props: {
     cityList: Object
-  },
-  updated() {
-    this.$refs.resultScroll.refresh()
   },
   activated() {
     // 组件激活时，重置一些变量，初始化
     this.isFocus = false
     this.keyword = ''
-    this.wrapperStyle = ''
+    this.searchStyle = ''
   },
   data() {
     return {
@@ -64,8 +61,8 @@ export default {
       isFocus: false,
       // 搜索结果
       result: [],
-      // 包装纸样式
-      wrapperStyle: ''
+      // 本组件样式
+      searchStyle: ''
     }
   },
   computed: {
@@ -101,15 +98,15 @@ export default {
   methods: {
     // 输入框获得焦点时
     handleFocus() {
-      // 使包装纸扩大至全屏，成为半透明的遮罩层，滚动区域也会随父元素扩大
-      this.wrapperStyle = 'bottom:0;'
+      // 使最外层元素扩大至全屏，成为半透明的遮罩层，滚动区域也会随父元素扩大
+      this.searchStyle = 'bottom:0;'
       this.isFocus = true
     },
     // 输入框失去焦点时
     handleBlur() {
       // 如果关键词为空重置之前的改变
       if (!this.keyword) {
-        this.wrapperStyle = ''
+        this.searchStyle = ''
         this.isFocus = false
       }
     },
@@ -130,7 +127,7 @@ export default {
 <style lang="stylus" scoped>
 @import '~styles/varibles.styl';
 
-.wrapper {
+.search {
   position: absolute;
   z-index: 1020;
   top: 0;
@@ -158,7 +155,7 @@ export default {
       }
     }
 
-    .search {
+    .input {
       display: flex;
       align-items: center;
       flex: 1;
@@ -226,7 +223,7 @@ export default {
       img {
         display: block;
         margin: 0 auto;
-        width: 50%;
+        width: 4rem;
       }
     }
   }

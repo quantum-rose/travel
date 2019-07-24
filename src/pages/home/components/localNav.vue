@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div class="local-nav-wrapper">
     <ul class="local-nav">
       <li v-for="item in localNavs" :key="item.id">
         <a href="javascript:;">
@@ -21,7 +21,7 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-.wrapper {
+.local-nav-wrapper {
   position: relative;
   width: 100%;
   margin-bottom: 0.44rem;

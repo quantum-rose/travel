@@ -12,6 +12,16 @@
         <home-local-nav :localNavs="localNavs"></home-local-nav>
         <home-grid-nav :gridNavs="gridNavs"></home-grid-nav>
         <home-subnav :subnavs="subnavs"></home-subnav>
+        <div class="welcome">
+          <div class="weather">
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="#iconduoyun" />
+            </svg>
+            <span class="temperature">35℃</span>
+          </div>
+          您好,欢迎来到{{currentCity.name}}
+        </div>
+        <home-popular></home-popular>
         <div :ref="'div'+i" v-for="(item, i) in Array(100)" :key="i">{{i}}</div>
       </div>
     </better-scroll>
@@ -25,14 +35,12 @@ import homeSwiper from './components/swiper'
 import homeLocalNav from './components/localNav'
 import homeGridNav from './components/gridNav'
 import homeSubnav from './components/subnav'
+import homePopular from './components/popular'
 
 export default {
   name: 'home',
   created() {
     this.getHomeData()
-  },
-  updated() {
-    this.$refs.homeScroll.refresh()
   },
   data() {
     return {
@@ -64,6 +72,7 @@ export default {
     ...mapState(['currentCity'])
   },
   watch: {
+    // 当前城市变化后重新获得首页数据
     currentCity() {
       this.getHomeData()
     }
@@ -96,7 +105,8 @@ export default {
     homeSwiper,
     homeLocalNav,
     homeGridNav,
-    homeSubnav
+    homeSubnav,
+    homePopular
   }
 }
 </script>
@@ -108,5 +118,27 @@ export default {
   bottom: 0;
   left: 0;
   right: 0;
+  background-color: #f8f8f8;
+
+  .welcome {
+    position: relative;
+    margin-bottom: 0.2rem;
+    font-size: 0.32rem;
+    text-align: center;
+    line-height: 0.64rem;
+
+    .weather {
+      position: absolute;
+      left: 0.24rem;
+
+      .icon {
+        font-size: 0.5rem;
+      }
+
+      .temperature {
+        font-size: 0.24rem;
+      }
+    }
+  }
 }
 </style>

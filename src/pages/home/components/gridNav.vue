@@ -61,9 +61,8 @@ export default {
 
       .hot {
         position: absolute;
-        right: 50%;
         bottom: 50%;
-        transform: translate(85%, -0.16rem);
+        transform: translate(35%, -0.16rem);
         padding: 0.04rem 0.08rem;
         background-color: #f54c45;
         border-radius: 0.16rem;

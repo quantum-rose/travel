@@ -8,7 +8,7 @@
     </div>
     <div class="search">
       <i class="iconfont">&#xe632;</i>
-      <input type="text" placeholder="郑州热搜景点：郑州方特水上乐园" :style="searchStyle" />
+      <input type="search" placeholder="洛阳攻略·游记·精选酒店" :style="searchStyle" />
     </div>
     <div class="header-right">
       <div class="circle" :style="circleStyle">

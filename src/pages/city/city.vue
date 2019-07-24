@@ -1,6 +1,6 @@
 <template>
   <div class="city">
-    <city-header :cityList="cityList" @choose="chooseCity"></city-header>
+    <city-search :cityList="cityList" @choose="chooseCity"></city-search>
     <city-tabbar></city-tabbar>
     <city-list
       :historyCity="historyCity"
@@ -15,7 +15,7 @@
 
 <script>
 import { mapMutations } from 'vuex'
-import cityHeader from './components/header'
+import citySearch from './components/search'
 import cityTabbar from './components/tabbar'
 import cityList from './components/cityList'
 import cityAlphabet from './components/alphabet'
@@ -77,7 +77,7 @@ export default {
     ...mapMutations(['changeCurrentCity'])
   },
   components: {
-    cityHeader,
+    citySearch,
     cityTabbar,
     cityList,
     cityAlphabet
