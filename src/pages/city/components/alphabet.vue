@@ -8,7 +8,9 @@
       @touchstart="handleTouchStart"
       @touchmove.prevent="handleTouchMove"
       @touchend="handleTouchEnd"
-    >{{item}}</li>
+    >
+      {{ item }}
+    </li>
   </ul>
 </template>
 

@@ -3,7 +3,7 @@
     <li v-for="item in subnavs" :key="item.id">
       <a href="javascript:;">
         <div class="subnav-image"></div>
-        <p class="subnav-title">{{item.title}}</p>
+        <p class="subnav-title">{{ item.title }}</p>
       </a>
     </li>
   </ul>

@@ -13,30 +13,34 @@
           <li>
             <button @click="chooseCity(currentCity)">
               <i class="iconfont">&#xe65e;</i>
-              {{currentCity.name}}
+              {{ currentCity.name }}
             </button>
           </li>
         </ul>
         <div class="sub-title">历史访问城市</div>
         <ul class="clearfix">
           <li v-for="item in historyCity" :key="item.id">
-            <button @click="chooseCity(item)">{{item.name}}</button>
+            <button @click="chooseCity(item)">{{ item.name }}</button>
           </li>
         </ul>
         <div class="sub-title">热门城市</div>
         <ul class="clearfix">
           <li v-for="item in hotCities" :key="item.id">
-            <button @click="chooseCity(item)">{{item.name}}</button>
+            <button @click="chooseCity(item)">{{ item.name }}</button>
           </li>
         </ul>
       </div>
       <!-- 按拼音首字母排列的城市列表 -->
       <ul class="area" v-for="(item, key) in cityList" :key="key">
-        <li class="title" :ref="key">{{key}}</li>
-        <li v-for="entry in item" :key="entry.id" @click="chooseCity(entry)">{{entry.name}}</li>
+        <li class="title" :ref="key">{{ key }}</li>
+        <li v-for="entry in item" :key="entry.id" @click="chooseCity(entry)">
+          {{ entry.name }}
+        </li>
       </ul>
     </div>
-    <div class="sticky" v-show="isScrolled" :style="stickyTop">{{currentTitle}}</div>
+    <div class="sticky" v-show="isScrolled" :style="stickyTop">
+      {{ currentTitle }}
+    </div>
   </better-scroll>
 </template>
 

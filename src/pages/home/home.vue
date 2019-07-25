@@ -19,10 +19,11 @@
             </svg>
             <span class="temperature">35℃</span>
           </div>
-          您好,欢迎来到{{currentCity.name}}
+          您好,欢迎来到{{ currentCity.name }}
         </div>
         <home-popular></home-popular>
-        <div :ref="'div'+i" v-for="(item, i) in Array(100)" :key="i">{{i}}</div>
+        <home-recommend></home-recommend>
+        <home-waterfall></home-waterfall>
       </div>
     </better-scroll>
   </div>
@@ -36,6 +37,8 @@ import homeLocalNav from './components/localNav'
 import homeGridNav from './components/gridNav'
 import homeSubnav from './components/subnav'
 import homePopular from './components/popular'
+import homeRecommend from './components/recommend'
+import homeWaterfall from './components/waterfall'
 
 export default {
   name: 'home',
@@ -106,7 +109,9 @@ export default {
     homeLocalNav,
     homeGridNav,
     homeSubnav,
-    homePopular
+    homePopular,
+    homeRecommend,
+    homeWaterfall
   }
 }
 </script>

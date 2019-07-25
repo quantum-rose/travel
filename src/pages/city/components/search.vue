@@ -26,8 +26,10 @@
       v-show="keyword"
     >
       <ul class="result">
-        <img v-if="noResult" src="~images/no-city-min.png" />
-        <li v-for="item in result" :key="item.id" @click="chooseCity(item)">{{item.name}}</li>
+        <img v-if="noResult" src="upload/no-city.png" />
+        <li v-for="item in result" :key="item.id" @click="chooseCity(item)">
+          {{ item.name }}
+        </li>
       </ul>
     </better-scroll>
   </div>

@@ -3,9 +3,9 @@
     <div v-for="entry in gridNavs" :key="entry.id" :class="entry.title">
       <a v-for="item in entry.children" :key="item.id" href="javascript:;">
         <div>
-          <span v-if="item.title" class="title">{{item.title}}</span>
-          <span v-if="item.hot" class="hot">{{item.hot}}</span>
-          <span v-if="item.tag" class="tag">{{item.tag}}</span>
+          <span v-if="item.title" class="title">{{ item.title }}</span>
+          <span v-if="item.hot" class="hot">{{ item.hot }}</span>
+          <span v-if="item.tag" class="tag">{{ item.tag }}</span>
         </div>
       </a>
     </div>
@@ -63,11 +63,12 @@ export default {
         position: absolute;
         bottom: 50%;
         transform: translate(35%, -0.16rem);
-        padding: 0.04rem 0.08rem;
+        line-height: 0.3rem;
+        padding: 0 0.08rem;
         background-color: #f54c45;
         border-radius: 0.16rem;
         border-bottom-left-radius: 0;
-        font-size: 0.24rem;
+        font-size: 0.22rem;
       }
     }
 

@@ -4,7 +4,7 @@
       <li v-for="item in localNavs" :key="item.id">
         <a href="javascript:;">
           <div></div>
-          <p>{{item.title}}</p>
+          <p>{{ item.title }}</p>
         </a>
       </li>
     </ul>

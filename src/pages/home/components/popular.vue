@@ -5,7 +5,10 @@
       <div class="more iconfont">更多&#xe62e;</div>
     </div>
     <div class="attractions">
-      <img src="upload/2dcda4e400ace9f993835fbb.jpg_250x250_d841fd57.jpg" alt="景点" />
+      <img
+        src="upload/2dcda4e400ace9f993835fbb.jpg_250x250_d841fd57.jpg"
+        alt="景点"
+      />
       <div class="list">
         <div>景点人气榜</div>
         <p>
@@ -24,7 +27,10 @@
       <div class="more iconfont">&#xe62e;</div>
     </div>
     <div class="hotel">
-      <img src="upload/200u0j000000aw3xuE230_C_360_360_Q50.jpg_.webp" alt="酒店" />
+      <img
+        src="upload/200u0j000000aw3xuE230_C_360_360_Q50.jpg_.webp"
+        alt="酒店"
+      />
       <div class="list">
         <div>酒店人气榜</div>
         <p>
@@ -53,11 +59,11 @@ export default {
 
 <style lang="stylus" scoped>
 .popular {
-  margin: 0 0.24rem;
+  margin: 0 0.24rem 0.24rem;
   padding: 0.2rem;
   background-color: #fff;
   border-radius: 0.16rem;
-  box-shadow: 0 0 0.08rem rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 0.12rem rgba(0, 0, 0, 0.1);
 
   .head, .attractions, .hotel {
     display: flex;
@@ -98,7 +104,7 @@ export default {
       &::before {
         content: '';
         position: absolute;
-        left: -0.24rem;
+        left: -0.23rem;
         top: 50%;
         transform: translateY(-50%);
         border: 0.12rem solid transparent;

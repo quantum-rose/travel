@@ -2,13 +2,17 @@
   <div class="header" :style="headerStyle">
     <div class="header-left">
       <router-link to="/city" :style="cityStyle">
-        <div class="city">{{currentCity.name}}</div>
+        <div class="city">{{ currentCity.name }}</div>
         <i class="iconfont">&nbsp;&#xe62d;</i>
       </router-link>
     </div>
     <div class="search">
       <i class="iconfont">&#xe632;</i>
-      <input type="search" placeholder="洛阳攻略·游记·精选酒店" :style="searchStyle" />
+      <input
+        type="search"
+        placeholder="洛阳攻略·游记·精选酒店"
+        :style="searchStyle"
+      />
     </div>
     <div class="header-right">
       <div class="circle" :style="circleStyle">
