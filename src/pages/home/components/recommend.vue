@@ -8,42 +8,29 @@
       <div class="row">
         <div class="column">
           <div class="tag iconfont">旅行视频&#xe617;</div>
-          <img
-            src="upload/CggYHlXWwYCAWSf4AD7T3hxEde0314_D_500_250.jpg"
-            alt="一分钟教你玩古都洛阳"
-          />
+          <img src="upload/CggYHlXWwYCAWSf4AD7T3hxEde0314_D_500_250.jpg" />
           <div class="title">一分钟教你玩古都洛阳</div>
         </div>
         <div class="column">
           <img
             src="upload/d846f0a902264018b0bbf57410e6127a_D_250_250_Q90.jpg"
-            alt="当地特色菜"
           />
           <div class="title">当地特色菜</div>
         </div>
       </div>
       <div class="row">
         <div class="column">
-          <img
-            src="upload/100t10000000paws4EC47_C_250_250.jpg"
-            alt="龙门石窟"
-          />
+          <img src="upload/100t10000000paws4EC47_C_250_250.jpg" />
           <p>龙门石窟</p>
           <p>当地必打卡</p>
         </div>
         <div class="column">
-          <img
-            src="upload/10020f0000007exdc99FE_C_250_250.jpg"
-            alt="名胜古迹"
-          />
+          <img src="upload/10020f0000007exdc99FE_C_250_250.jpg" />
           <p>名胜古迹</p>
           <p>当地必打卡</p>
         </div>
         <div class="column">
-          <img
-            src="upload/10040m000000dxiffB127_C_250_250.jpg"
-            alt="奇妙博物馆"
-          />
+          <img src="upload/10040m000000dxiffB127_C_250_250.jpg" />
           <p>奇妙博物馆</p>
           <p>大家都爱去</p>
         </div>
@@ -106,7 +93,6 @@ export default {
           display: block;
           width: 100%;
           height: calc(((100vw - 0.48rem) / 3));
-          background: #eee;
         }
 
         .title {

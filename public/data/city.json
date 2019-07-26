@@ -1,6 +1,6 @@
 {
 	"ret": true,
-	"data":{
+	"data": {
 		"hotCities": [{
 			"id": 1,
 			"spell": "beijing",

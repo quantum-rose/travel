@@ -1,11 +1,12 @@
 <template>
   <div>
-    <home-header :scroll-y="scrollY" @change="flagChanged"></home-header>
+    <home-header :scroll-y="scrollY"></home-header>
     <better-scroll
       class="home-scroll"
       :ref="'homeScroll'"
       :options="scrollOption"
       @scroll="handleScroll"
+      @pullingUp="handlePullingUp"
     >
       <div class="content">
         <home-swiper :swiperImages="swiperImages"></home-swiper>
@@ -23,7 +24,11 @@
         </div>
         <home-popular></home-popular>
         <home-recommend></home-recommend>
-        <home-waterfall></home-waterfall>
+        <home-waterfall
+          :sight="sight"
+          :pagenum="pagenum"
+          :pagesize="pagesize"
+        ></home-waterfall>
       </div>
     </better-scroll>
   </div>
@@ -63,12 +68,19 @@ export default {
           bottom: false,
           left: false,
           right: false
+        },
+        pullUpLoad: {
+          threshold: 50
         }
       },
       // 滚动区域的y坐标
       scrollY: 0,
-      // 滚动区域y坐标为-90时的样式是否已设置的标识
-      flag: false
+      // 景点信息列表
+      sight: [],
+      // 当前请求的页数
+      pagenum: 1,
+      // 每页数据条数
+      pagesize: 10
     }
   },
   computed: {
@@ -92,15 +104,31 @@ export default {
       this.localNavs = data.localNavs
       this.gridNavs = data.gridNavs
       this.subnavs = data.subnavs
+      // 获取瀑布流数据
+      this.getSightData()
     },
+    async getSightData() {
+      const { data: result } = await this.$http.get(
+        `data/sight${(this.pagenum - 1) % 2}.json`,
+        {
+          params: {
+            cityid: this.currentCity.id,
+            pagenum: this.pagenum,
+            pagesize: this.pagesize
+          }
+        }
+      )
+      this.sight = [...this.sight, ...result]
+      this.pagenum++
+    },
+    // 页面滚动事件，获取y坐标
     handleScroll({ y }) {
-      // 如果y坐标超过-90且标识变量为真，说明头部渐变已完成，直接退出，避免触发无意义的updated生命周期钩子
-      if (y <= -90 && this.flag) return
       this.scrollY = Math.ceil(y)
     },
-    // 感知头部子组件flag变化的函数，并保存
-    flagChanged(flag) {
-      this.flag = flag
+    // 处理上拉加载
+    async handlePullingUp() {
+      await this.getSightData()
+      this.$refs.homeScroll.BScroll.finishPullUp()
     }
   },
   components: {

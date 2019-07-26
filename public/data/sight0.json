@@ -1,0 +1,80 @@
+[{
+  "id": 8865,
+  "name": "龙门石窟",
+  "shortFeatures": ["中国四大石窟之一"],
+  "sightCategoryInfo": "洛阳景点人气榜第1名",
+  "price": 148,
+  "distanceStr": "距市中心7.2km",
+  "imgUrl": "upload/100u10000000pau0s116D.jpg"
+}, {
+  "id": 9348,
+  "name": "老君山景区",
+  "shortFeatures": ["道教名山观日出云海"],
+  "price": 90,
+  "distanceStr": "距市中心130.6km",
+  "imgUrl": "upload/CggYHlXWwYCAWSf4AD7T3hxEde0314.jpg"
+}, {
+  "id": 8940,
+  "name": "白马寺",
+  "shortFeatures": ["中国佛教祖庭与狄仁杰之墓"],
+  "sightCategoryInfo": "洛阳景点人气榜第4名",
+  "price": 99,
+  "distanceStr": "距市中心20.1km",
+  "imgUrl": "upload/CghzfFWwxsuAHIL8ABLulITTChw397.jpg"
+}, {
+  "id": 57632,
+  "name": "重渡沟风景区",
+  "shortFeatures": ["千米竹林长廊景观"],
+  "sightCategoryInfo": "栾川景点人气榜第1名",
+  "price": 115,
+  "distanceStr": "距市中心109.9km",
+  "imgUrl": "upload/10060v000000ju9p8E776.jpg"
+}, {
+  "id": 126715,
+  "name": "隋唐洛阳城国家遗址公园天堂明堂景区",
+  "shortFeatures": ["女皇武则天生活理政的场所"],
+  "sightCategoryInfo": "洛阳景点人气榜第3名",
+  "price": 105,
+  "distanceStr": "距市中心6.7km",
+  "imgUrl": "upload/10020f0000007exdc99FE.jpg"
+}, {
+  "id": 135601,
+  "name": "龙潭大峡谷",
+  "shortFeatures": ["欣赏高峡瓮谷景观"],
+  "sightCategoryInfo": "洛阳景点人气榜第8名",
+  "price": 75,
+  "distanceStr": "距市中心62.5km",
+  "imgUrl": "upload/100m0v000000k30yv9102.jpg"
+}, {
+  "id": 9324,
+  "name": "白云山",
+  "shortFeatures": ["登顶中原高峰欣赏壮美日出"],
+  "sightCategoryInfo": "洛阳景点人气榜第12名",
+  "price": 67.5,
+  "distanceStr": "距市中心123.4km",
+  "imgUrl": "upload/CggYHVXdfOSAVy69ABd4hFYdsMU359.jpg"
+}, {
+  "id": 47087,
+  "name": "天子驾六博物馆",
+  "shortFeatures": ["东周时期墓葬和车马坑"],
+  "sightCategoryInfo": "洛阳景点人气榜第10名",
+  "price": 25,
+  "distanceStr": "距市中心6.1km",
+  "imgUrl": "upload/100e11000000rhibf621B.jpg"
+}, {
+  "id": 9346,
+  "name": "鸡冠洞",
+  "shortFeatures": ["灯光下的喀斯特溶洞"],
+  "sightCategoryInfo": "栾川景点人气榜第2名",
+  "price": 74,
+  "distanceStr": "距市中心133.7km",
+  "imgUrl": "upload/10030v000000jvdhwAE46.jpg"
+}, {
+  "id": 77546,
+  "name": "洛阳博物馆",
+  "shortFeatures": ["赏稀世珍宝品洛阳古都文化"],
+  "sightCategoryInfo": "洛阳景点人气榜第20名",
+  "price": 0,
+  "distanceStr": "距市中心2.6km",
+  "imgUrl": "upload/10030f0000007ey067AAD.jpg"
+}]

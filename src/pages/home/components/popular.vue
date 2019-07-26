@@ -5,10 +5,7 @@
       <div class="more iconfont">更多&#xe62e;</div>
     </div>
     <div class="attractions">
-      <img
-        src="upload/2dcda4e400ace9f993835fbb.jpg_250x250_d841fd57.jpg"
-        alt="景点"
-      />
+      <img src="upload/2dcda4e400ace9f993835fbb.jpg_250x250_d841fd57.jpg" />
       <div class="list">
         <div>景点人气榜</div>
         <p>
@@ -27,10 +24,7 @@
       <div class="more iconfont">&#xe62e;</div>
     </div>
     <div class="hotel">
-      <img
-        src="upload/200u0j000000aw3xuE230_C_360_360_Q50.jpg_.webp"
-        alt="酒店"
-      />
+      <img src="upload/200u0j000000aw3xuE230_C_360_360_Q50.jpg_.webp" />
       <div class="list">
         <div>酒店人气榜</div>
         <p>

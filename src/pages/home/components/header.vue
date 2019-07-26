@@ -29,9 +29,6 @@ import { mapState } from 'vuex'
 
 export default {
   name: 'home-header',
-  mounted() {
-    window.onscroll = this.handleScroll
-  },
   props: {
     scrollY: Number
   },
@@ -65,6 +62,8 @@ export default {
     scrollY(y) {
       // y坐标超过-90
       if (y <= -90) {
+        // 如果y坐标超过-90且标识变量为真，说明头部渐变已完成，直接退出
+        if (this.flag) return
         // 重置y为-90
         y = -90
         // 为头部设置下方阴影
@@ -86,10 +85,6 @@ export default {
       this.pointStyle.backgroundColor = color
       // 本次样式设置完毕后，如果y坐标为-90，改变标识变量
       if (y === -90) this.flag = true
-    },
-    // 标识变量改变后，向外触发事件，传递标志变量的值
-    flag(val) {
-      this.$emit('change', val)
     }
   }
 }

@@ -26,7 +26,7 @@
       v-show="keyword"
     >
       <ul class="result">
-        <img v-if="noResult" src="upload/no-city.png" />
+        <div class="no-result" v-if="noResult"></div>
         <li v-for="item in result" :key="item.id" @click="chooseCity(item)">
           {{ item.name }}
         </li>
@@ -222,10 +222,12 @@ export default {
         }
       }
 
-      img {
-        display: block;
-        margin: 0 auto;
+      .no-result {
         width: 4rem;
+        height: 4rem;
+        margin: 0 auto;
+        background: url('~images/no-result.png') no-repeat;
+        background-size: contain;
       }
     }
   }
