@@ -4,11 +4,16 @@
       <img :src="item.imgUrl" @load="imageLoaded" />
       <div class="text">
         <div class="title">{{ item.name }}</div>
-        <div class="shortFeatures" v-if="item.shortFeatures.length > 0">
-          <span>{{ item.shortFeatures[0] }}</span>
+        <div
+          class="shortFeatures clearfix"
+          v-if="item.shortFeatures.length > 0"
+        >
+          <span v-for="feature in item.shortFeatures" :key="feature">{{
+            feature
+          }}</span>
         </div>
         <div class="sightCategoryInfo">{{ item.sightCategoryInfo }}</div>
-        <div>
+        <div class="about clearfix">
           <span class="price"
             >￥<span class="num">{{ item.price }}</span
             >起</span
@@ -26,7 +31,9 @@ export default {
   props: {
     // 景点列表
     sight: Array,
+    // 页码
     pagenum: Number,
+    // 当前页数据条数
     pagesize: Number
   },
   updated() {
@@ -48,14 +55,13 @@ export default {
       // 瀑布流元素的宽度
       itemWidth: 0,
       // 瀑布流元素之间的间隙(px)
-      gap: 12,
+      gap: 10,
       // 瀑布流每一列的高度
       columns: [],
       // 加载完毕的图片数量
       loadedImagesCount: 0
     }
   },
-  computed: {},
   watch: {
     // 监听加载完毕的图片数量
     loadedImagesCount(count) {
@@ -72,13 +78,11 @@ export default {
     },
     // 渲染瀑布流布局
     renderWaterFall() {
-      // 瀑布流元素的宽度
-      let itemWidth = this.itemWidth
       // 元素之间的间隙
       let gap = this.gap
       // 遍历当前未被渲染为瀑布流的元素，起始位置和pagenum、pagesize有关
       for (
-        let i = (this.pagenum - 2) * this.pagesize;
+        let i = (this.pagenum - 1) * this.pagesize;
         i < this.items.length;
         i++
       ) {
@@ -87,8 +91,8 @@ export default {
           // top为0
           this.items[i].style.top = 0
           // left为 (元素宽度 + 间隙) × 索引
-          this.items[i].style.left = (itemWidth + gap) * i + 'px'
-          // 保存每一列的高度（刚好是当前元素的高度）
+          this.items[i].style.left = (this.itemWidth + gap) * i + 'px'
+          // 保存每一列的高度 (刚好是当前元素的高度)
           this.columns.push(this.items[i].offsetHeight)
         } else {
           /* 之后所有元素的位置 */
@@ -103,7 +107,7 @@ export default {
           }
           // top为高度最小列的高度再加上间隙
           this.items[i].style.top = this.columns[index] + gap + 'px'
-          // left为高度最小列的left（每一列高度的索引和第一行所有元素的索引相同）
+          // left为高度最小列的left (每一列高度的索引和第一行所有元素的索引相同)
           this.items[i].style.left = this.items[index].offsetLeft + 'px'
           // 修改最小列的高度 = 当前高度 + 当前元素高度 + 间隙
           this.columns[index] =
@@ -127,11 +131,11 @@ export default {
 <style lang="stylus" scoped>
 .waterfall {
   position: relative;
-  margin: 0 0.24rem;
+  margin: 0 0.2rem;
 
   .item {
     position: absolute;
-    width: calc(50% - 0.12rem);
+    width: calc(50% - 0.1rem);
     border-radius: 0.08rem;
     overflow: hidden;
     background-color: #fff;
@@ -142,7 +146,7 @@ export default {
     }
 
     .text {
-      padding: 0.2rem;
+      padding: 0.16rem;
       line-height: 0.48rem;
 
       .title {
@@ -152,7 +156,10 @@ export default {
 
       .shortFeatures {
         >span {
+          float: left;
           padding: 0.05rem 0.08rem;
+          margin: 0.04rem 0.08rem 0.04rem 0;
+          line-height: 1;
           font-size: 0.2rem;
           color: #0086f6;
           background-color: #ebf5ff;
@@ -165,19 +172,21 @@ export default {
         color: #666;
       }
 
-      .price {
-        font-size: 0.22rem;
-        color: #f60;
+      .about {
+        .price {
+          margin-right: 0.2rem;
+          font-size: 0.22rem;
+          color: #f60;
 
-        .num {
-          font-size: 0.36rem;
+          .num {
+            font-size: 0.36rem;
+          }
         }
-      }
 
-      .distanceStr {
-        margin-left: 0.2rem;
-        font-size: 0.22rem;
-        color: #666;
+        .distanceStr {
+          font-size: 0.22rem;
+          color: #666;
+        }
       }
     }
   }

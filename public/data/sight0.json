@@ -1,7 +1,7 @@
 [{
   "id": 8865,
   "name": "龙门石窟",
-  "shortFeatures": ["中国四大石窟之一"],
+  "shortFeatures": ["中国四大石窟之一", "5A景区", "世界文化遗产"],
   "sightCategoryInfo": "洛阳景点人气榜第1名",
   "price": 148,
   "distanceStr": "距市中心7.2km",
@@ -9,7 +9,8 @@
 }, {
   "id": 9348,
   "name": "老君山景区",
-  "shortFeatures": ["道教名山观日出云海"],
+  "shortFeatures": ["道教名山观日出云海", "4A景区", "寺庙"],
+  "sightCategoryInfo": "栾川优质名胜景区第1名",
   "price": 90,
   "distanceStr": "距市中心130.6km",
   "imgUrl": "upload/CggYHlXWwYCAWSf4AD7T3hxEde0314.jpg"
@@ -32,7 +33,7 @@
 }, {
   "id": 126715,
   "name": "隋唐洛阳城国家遗址公园天堂明堂景区",
-  "shortFeatures": ["女皇武则天生活理政的场所"],
+  "shortFeatures": ["女皇武则天生活理政的场所", "文化旅游区"],
   "sightCategoryInfo": "洛阳景点人气榜第3名",
   "price": 105,
   "distanceStr": "距市中心6.7km",

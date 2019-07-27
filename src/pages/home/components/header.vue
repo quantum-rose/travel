@@ -10,7 +10,7 @@
       <i class="iconfont">&#xe632;</i>
       <input
         type="search"
-        placeholder="洛阳攻略·游记·精选酒店"
+        :placeholder="currentCity.name + '攻略·游记·精选酒店'"
         :style="searchStyle"
       />
     </div>
@@ -97,7 +97,7 @@ export default {
 .header {
   display: flex;
   position: fixed;
-  z-index: 1001;
+  z-index: 1010;
   top: 0;
   width: 100%;
   height: 0.88rem;

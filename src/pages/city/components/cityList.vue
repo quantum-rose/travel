@@ -59,6 +59,9 @@ export default {
     // 城市拼音首字母，用于快速定位
     letter: String
   },
+  activated() {
+    this.$refs.cityScroll.BScroll.refresh()
+  },
   data() {
     return {
       // better-scroll配置

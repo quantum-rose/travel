@@ -1,6 +1,10 @@
 <template>
   <div>
     <home-header :scroll-y="scrollY"></home-header>
+    <home-local-hot
+      :localHot="localHot"
+      v-show="topLocalHotVisible"
+    ></home-local-hot>
     <better-scroll
       class="home-scroll"
       :ref="'homeScroll'"
@@ -22,8 +26,9 @@
           </div>
           您好,欢迎来到{{ currentCity.name }}
         </div>
-        <home-popular></home-popular>
-        <home-recommend></home-recommend>
+        <home-popular :popularList="popularList"></home-popular>
+        <home-recommend :recommend="recommend"></home-recommend>
+        <home-local-hot :localHot="localHot" ref="localHot"></home-local-hot>
         <home-waterfall
           :sight="sight"
           :pagenum="pagenum"
@@ -43,12 +48,19 @@ import homeGridNav from './components/gridNav'
 import homeSubnav from './components/subnav'
 import homePopular from './components/popular'
 import homeRecommend from './components/recommend'
+import homeLocalHot from './components/lovalHot'
 import homeWaterfall from './components/waterfall'
 
 export default {
   name: 'home',
   created() {
     this.getHomeData()
+  },
+  activated() {
+    this.$refs.homeScroll.BScroll.refresh()
+  },
+  updated() {
+    this.localHotOffsetTop = this.$refs.localHot.$el.offsetTop
   },
   data() {
     return {
@@ -60,6 +72,12 @@ export default {
       gridNavs: [],
       // 子导航数据
       subnavs: [],
+      // 排行榜数据
+      popularList: [],
+      // 玩法研究院数据
+      recommend: [],
+      // 当地热门数据
+      localHot: [],
       // better-scroll配置
       scrollOption: {
         probeType: 3,
@@ -75,15 +93,21 @@ export default {
       },
       // 滚动区域的y坐标
       scrollY: 0,
+      // 当地热门的offsetTop
+      localHotOffsetTop: Infinity,
       // 景点信息列表
       sight: [],
-      // 当前请求的页数
-      pagenum: 1,
+      // 当前请求的页数(初始为0)
+      pagenum: 0,
       // 每页数据条数
       pagesize: 10
     }
   },
   computed: {
+    // 顶部的当地热门是否可见的标识
+    topLocalHotVisible() {
+      return -this.scrollY > this.localHotOffsetTop
+    },
     ...mapState(['currentCity'])
   },
   watch: {
@@ -104,10 +128,14 @@ export default {
       this.localNavs = data.localNavs
       this.gridNavs = data.gridNavs
       this.subnavs = data.subnavs
-      // 获取瀑布流数据
+      this.popularList = data.popularList
+      this.recommend = data.recommend
+      this.localHot = data.localHot
       this.getSightData()
     },
+    // 获取景点列表数据
     async getSightData() {
+      this.pagenum++
       const { data: result } = await this.$http.get(
         `data/sight${(this.pagenum - 1) % 2}.json`,
         {
@@ -119,7 +147,6 @@ export default {
         }
       )
       this.sight = [...this.sight, ...result]
-      this.pagenum++
     },
     // 页面滚动事件，获取y坐标
     handleScroll({ y }) {
@@ -139,6 +166,7 @@ export default {
     homeSubnav,
     homePopular,
     homeRecommend,
+    homeLocalHot,
     homeWaterfall
   }
 }

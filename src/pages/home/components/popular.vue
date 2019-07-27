@@ -4,40 +4,13 @@
       <div class="title">排行榜</div>
       <div class="more iconfont">更多&#xe62e;</div>
     </div>
-    <div class="attractions">
-      <img src="upload/2dcda4e400ace9f993835fbb.jpg_250x250_d841fd57.jpg" />
+    <div :class="item.title" v-for="item in popularList" :key="item.title">
+      <img :src="item.img" />
       <div class="list">
         <div>景点人气榜</div>
-        <p>
-          <span>1</span>
-          龙门石窟
-        </p>
-        <p>
-          <span>2</span>
-          老君山景区
-        </p>
-        <p>
-          <span>3</span>
-          隋唐洛阳城国家遗址公园天堂名堂景区
-        </p>
-      </div>
-      <div class="more iconfont">&#xe62e;</div>
-    </div>
-    <div class="hotel">
-      <img src="upload/200u0j000000aw3xuE230_C_360_360_Q50.jpg_.webp" />
-      <div class="list">
-        <div>酒店人气榜</div>
-        <p>
-          <span>1</span>
-          伊川丽都国际酒店
-        </p>
-        <p>
-          <span>2</span>
-          栾川智选假日酒店
-        </p>
-        <p>
-          <span>3</span>
-          洛阳华阳广场国际大饭店
+        <p v-for="(sight, i) in item.list" :key="i">
+          <span>{{ i + 1 }}</span>
+          {{ sight }}
         </p>
       </div>
       <div class="more iconfont">&#xe62e;</div>
@@ -47,7 +20,10 @@
 
 <script>
 export default {
-  name: 'home-popular'
+  name: 'home-popular',
+  props: {
+    popularList: Array
+  }
 }
 </script>
 

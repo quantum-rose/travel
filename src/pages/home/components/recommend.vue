@@ -5,34 +5,15 @@
       <div class="more iconfont">更多&#xe62e;</div>
     </div>
     <div class="body">
-      <div class="row">
-        <div class="column">
-          <div class="tag iconfont">旅行视频&#xe617;</div>
-          <img src="upload/CggYHlXWwYCAWSf4AD7T3hxEde0314_D_500_250.jpg" />
-          <div class="title">一分钟教你玩古都洛阳</div>
-        </div>
-        <div class="column">
-          <img
-            src="upload/d846f0a902264018b0bbf57410e6127a_D_250_250_Q90.jpg"
-          />
-          <div class="title">当地特色菜</div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="column">
-          <img src="upload/100t10000000paws4EC47_C_250_250.jpg" />
-          <p>龙门石窟</p>
-          <p>当地必打卡</p>
-        </div>
-        <div class="column">
-          <img src="upload/10020f0000007exdc99FE_C_250_250.jpg" />
-          <p>名胜古迹</p>
-          <p>当地必打卡</p>
-        </div>
-        <div class="column">
-          <img src="upload/10040m000000dxiffB127_C_250_250.jpg" />
-          <p>奇妙博物馆</p>
-          <p>大家都爱去</p>
+      <div class="row" v-for="(row, i) in recommend" :key="i">
+        <div class="column" v-for="(column, i) in row" :key="i">
+          <div class="tag iconfont" v-if="column.tag">
+            {{ column.tag }}&#xe617;
+          </div>
+          <img :src="column.img" />
+          <div class="title" v-if="column.title">{{ column.title }}</div>
+          <p v-if="column.sight">{{ column.sight }}</p>
+          <p v-if="column.about">{{ column.about }}</p>
         </div>
       </div>
     </div>
@@ -41,7 +22,10 @@
 
 <script>
 export default {
-  name: 'home-recommend'
+  name: 'home-recommend',
+  props: {
+    recommend: Array
+  }
 }
 </script>
 

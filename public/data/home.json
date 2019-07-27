@@ -113,6 +113,55 @@
     }, {
       "id": 110,
       "title": "更多"
+    }],
+    "popularList": [{
+      "title": "attractions",
+      "img": "upload/2dcda4e400ace9f993835fbb.jpg_250x250_d841fd57.jpg",
+      "list": ["龙门石窟", "老君山景区", "隋唐洛阳城国家遗址公园天堂名堂景区"]
+    }, {
+      "title": "hotel",
+      "img": "upload/200u0j000000aw3xuE230_C_360_360_Q50.jpg_.webp",
+      "list": ["伊川丽都国际酒店", "栾川智选假日酒店", "洛阳华阳广场国际大饭店"]
+    }],
+    "recommend": [
+      [{
+        "title": "一分钟教你玩古都洛阳",
+        "img": "upload/CggYHlXWwYCAWSf4AD7T3hxEde0314_D_500_250.jpg",
+        "tag": "旅行视频"
+      }, {
+        "title": "当地特色菜",
+        "img": "upload/d846f0a902264018b0bbf57410e6127a_D_250_250_Q90.jpg"
+      }],
+      [{
+        "img": "upload/100t10000000paws4EC47_C_250_250.jpg",
+        "sight": "龙门石窟",
+        "about": "当地必打卡"
+      }, {
+        "img": "upload/10020f0000007exdc99FE_C_250_250.jpg",
+        "sight": "名胜古迹",
+        "about": "当地必打卡"
+      }, {
+        "img": "upload/10040m000000dxiffB127_C_250_250.jpg",
+        "sight": "奇妙博物馆",
+        "about": "大家都爱去"
+      }]
+    ],
+    "localHot": [{
+      "id": 101,
+      "title": "景点",
+      "img": "upload/100t0l000000d61ht687A.png"
+    }, {
+      "id": 102,
+      "title": "住宿",
+      "img": "upload/10020l000000ddw8hB633.png"
+    }, {
+      "id": 103,
+      "title": "美食",
+      "img": "upload/100c0l000000d9klbC07D.png"
+    }, {
+      "id": 104,
+      "title": "美食",
+      "img": "upload/100u0l000000d6wtm2B89.png"
     }]
   }
 }
