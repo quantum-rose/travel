@@ -10,7 +10,7 @@
       :ref="'homeScroll'"
       :options="scrollOption"
       @scroll="handleScroll"
-      @pullingUp="handlePullingUp"
+      @pullingUp="getSightData"
     >
       <div class="content">
         <home-swiper :swiperImages="swiperImages"></home-swiper>
@@ -33,6 +33,7 @@
           :sight="sight"
           :pagenum="pagenum"
           :pagesize="pagesize"
+          @finishPullUp="finishPullUp"
         ></home-waterfall>
       </div>
     </better-scroll>
@@ -152,9 +153,8 @@ export default {
     handleScroll({ y }) {
       this.scrollY = Math.ceil(y)
     },
-    // 处理上拉加载
-    async handlePullingUp() {
-      await this.getSightData()
+    // 上拉数据加载完成
+    finishPullUp() {
       this.$refs.homeScroll.BScroll.finishPullUp()
     }
   },

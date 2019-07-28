@@ -1,6 +1,7 @@
 <template>
   <div class="waterfall" ref="waterfall">
-    <div class="item" v-for="item in sight" :key="item.id">
+    <!-- 避免key值相同触发vue警告，仅开发模式 -->
+    <div class="item" v-for="(item, i) in sight" :key="item.id + i">
       <img :src="item.imgUrl" @load="imageLoaded" />
       <div class="text">
         <div class="title">{{ item.name }}</div>
@@ -68,6 +69,7 @@ export default {
       // 如果全部加载完毕，渲染为瀑布流
       if (count === this.sight.length) {
         this.renderWaterFall()
+        this.$emit('finishPullUp')
       }
     }
   },
