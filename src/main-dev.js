@@ -1,25 +1,26 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
-import fastClick from 'fastclick'
+import FastClick from 'fastclick'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
-import Axios from 'axios'
+import axios from 'axios'
 import store from './store'
 import BetterScroll from './common/betterScroll'
+import './assets/fonts/iconfont'
+/* styles */
 import 'normalize.css'
 import 'swiper/dist/css/swiper.css'
 import './assets/fonts/iconfont.css'
 import './assets/styles/global.styl'
-import './assets/fonts/iconfont'
 
 Vue.use(VueAwesomeSwiper)
 Vue.use(BetterScroll)
 
-Vue.prototype.$http = Axios
+Vue.prototype.$http = axios
 
 Vue.config.productionTip = false
 
-fastClick.attach(document.body)
+FastClick.attach(document.body)
 
 new Vue({
   router,

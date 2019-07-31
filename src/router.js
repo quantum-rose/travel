@@ -1,11 +1,11 @@
 import Vue from 'vue'
-import Router from 'vue-router'
-const Home = () => import('./pages/home/home.vue')
-const City = () => import('./pages/city/city.vue')
+import VueRouter from 'vue-router'
+const Home = () => import( /* webpackChunkName: "Home" */ './pages/home/home.vue')
+const City = () => import( /* webpackChunkName: "City" */ './pages/city/city.vue')
 
-Vue.use(Router)
+Vue.use(VueRouter)
 
-export default new Router({
+export default new VueRouter({
   routes: [{
     path: '/',
     name: 'home',
