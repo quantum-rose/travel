@@ -60,7 +60,7 @@ export default {
     letter: String
   },
   activated() {
-    this.$refs.cityScroll.BScroll.refresh()
+    this.$refs.cityScroll.refresh()
   },
   data() {
     return {

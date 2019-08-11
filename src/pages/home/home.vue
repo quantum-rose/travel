@@ -58,7 +58,7 @@ export default {
     this.getHomeData()
   },
   activated() {
-    this.$refs.homeScroll.BScroll.refresh()
+    this.$refs.homeScroll.refresh()
   },
   updated() {
     this.localHotOffsetTop = this.$refs.localHot.$el.offsetTop
@@ -155,7 +155,7 @@ export default {
     },
     // 上拉数据加载完成
     finishPullUp() {
-      this.$refs.homeScroll.BScroll.finishPullUp()
+      this.$refs.homeScroll.finishPullUp()
     }
   },
   components: {
