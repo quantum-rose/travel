@@ -1,10 +1,10 @@
 # Vue2.6 实战 高仿去哪儿旅行、携程移动端 App
 [在线演示](http://cuihaojie.top/travel)
 
-<div style="text-align:center;">
-    <img src="http://cuihaojie.top/IMG/Screenshot_2019-08-11-17-24-08-364_com.android.ch.png" style="width:200px;"/>
-    <img src="http://cuihaojie.top/IMG/Screenshot_2019-08-11-17-24-29-380_com.android.ch.png" style="width:200px;"/>
-    <img src="http://cuihaojie.top/IMG/Screenshot_2019-08-11-17-24-46-393_com.android.ch.png" style="width:200px"/>
+<div align="center">
+    <img src="http://cuihaojie.top/IMG/Screenshot_2019-08-11-17-24-08-364_com.android.ch.png" width=200/>
+    <img src="http://cuihaojie.top/IMG/Screenshot_2019-08-11-17-24-29-380_com.android.ch.png" width=200/>
+    <img src="http://cuihaojie.top/IMG/Screenshot_2019-08-11-17-24-46-393_com.android.ch.png" width=200/>
 </div>
 
 ### 介绍：
