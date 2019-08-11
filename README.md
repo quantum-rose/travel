@@ -2,9 +2,9 @@
 [在线演示](http://cuihaojie.top/travel)
 
 <div align="center">
-    <img src="images/Screenshot_2019-08-11-17-24-08-364_com.android.ch.png" width=350/>
-    <img src="images/Screenshot_2019-08-11-17-24-29-380_com.android.ch.png" width=350/>
-    <img src="images/Screenshot_2019-08-11-17-24-46-393_com.android.ch.png" width=350/>
+    <img src="images/Screenshot_2019-08-11-17-24-08-364_com.android.ch.png" width=250/>
+    <img src="images/Screenshot_2019-08-11-17-24-29-380_com.android.ch.png" width=250/>
+    <img src="images/Screenshot_2019-08-11-17-24-46-393_com.android.ch.png" width=250/>
 </div>
 
 ### 介绍：
