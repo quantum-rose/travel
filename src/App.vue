@@ -1,39 +1,36 @@
 <template>
-  <div id="app">
-    <transition :mode="mode" :name="transitionName">
+  <router-view v-slot="{ Component }">
+    <transition :mode="transitionMode" :name="transitionName">
       <keep-alive>
-        <router-view />
+        <component :is="Component" />
       </keep-alive>
     </transition>
-  </div>
+  </router-view>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      transitionName: '',
-      mode: ''
-    }
-  },
-  watch: {
-    $route(to, from) {
-      if (to.name === 'city' && from.name === 'home') {
-        this.mode = 'in-out'
-        this.transitionName = 'slide-up'
-      } else if (to.name === 'home' && from.name === 'city') {
-        this.mode = 'in-out'
-        this.transitionName = 'slide-down'
-      } else {
-        this.mode = ''
-        this.transitionName = ''
-      }
+<script setup lang="ts">
+const transitionMode = ref<'out-in' | 'default' | 'in-out'>();
+const transitionName = ref('fade');
+
+const route = useRoute();
+watch(
+  () => route,
+  (to, from) => {
+    if (to.name === 'city' && from.name === 'home') {
+      transitionMode.value = 'in-out';
+      transitionName.value = 'slide-up';
+    } else if (to.name === 'home' && from.name === 'city') {
+      transitionMode.value = 'in-out';
+      transitionName.value = 'slide-down';
+    } else {
+      transitionMode.value = undefined;
+      transitionName.value = '';
     }
   }
-}
+);
 </script>
 
-<style lang="stylus" scoped>
+<style scoped lang="scss">
 @keyframes slide {
   0% {
     top: 100%;

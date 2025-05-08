@@ -1,167 +1,223 @@
 {
-  "ret": true,
+  "code": 0,
   "data": {
-    "swiperImages": [{
-      "id": 101,
-      "url": "upload/zg0516000000zifq4FC3C.jpg"
-    }, {
-      "id": 102,
-      "url": "upload/zg0a15000000ypf1tBC70.jpg"
-    }, {
-      "id": 103,
-      "url": "upload/zg0e15000000yqzweE43E.jpg"
-    }, {
-      "id": 104,
-      "url": "upload/zg0r16000000yrvpo1109.jpg"
-    }, {
-      "id": 105,
-      "url": "upload/zg0r16000000zx6hb0CB8.jpg"
-    }],
-    "localNavs": [{
-      "id": 101,
-      "title": "攻略·景点"
-    }, {
-      "id": 102,
-      "title": "门票·玩乐"
-    }, {
-      "id": 103,
-      "title": "美食林"
-    }, {
-      "id": 104,
-      "title": "周边游"
-    }, {
-      "id": 105,
-      "title": "一日游"
-    }],
-    "gridNavs": [{
-      "id": 11,
-      "title": "grid-nav-hotel",
-      "children": [{
+    "swipeImages": [
+      {
         "id": 101,
-        "title": "酒店"
-      }, {
+        "url": "upload/zg0516000000zifq4FC3C.jpg"
+      },
+      {
         "id": 102,
-        "title": "民宿·客栈",
-        "tag": "大促"
-      }, {
+        "url": "upload/zg0a15000000ypf1tBC70.jpg"
+      },
+      {
         "id": 103,
-        "title": "机票/火车票+酒店",
-        "hot": "方便又便宜"
-      }]
-    }, {
-      "id": 12,
-      "title": "grid-nav-flight",
-      "children": [{
-        "id": 201,
-        "title": "机票"
-      }, {
-        "id": 202,
-        "title": "火车票",
-        "tag": "暑运"
-      }, {
-        "id": 203,
-        "title": "汽车·船票"
-      }, {
-        "id": 204,
-        "title": "打车·租车"
-      }]
-    }, {
-      "id": 13,
-      "title": "grid-nav-travel",
-      "children": [{
-        "id": 301,
-        "title": "旅游",
-        "tag": "678月节"
-      }, {
-        "id": 302,
-        "title": "高铁游"
-      }, {
-        "id": 303,
-        "title": "邮轮游"
-      }, {
-        "id": 304,
-        "title": "定制游"
-      }]
-    }],
-    "subnavs": [{
-      "id": 101,
-      "title": "自由行"
-    }, {
-      "id": 102,
-      "title": "WiFi电话卡"
-    }, {
-      "id": 103,
-      "title": "保险·签证"
-    }, {
-      "id": 104,
-      "title": "换钞·购物"
-    }, {
-      "id": 105,
-      "title": "当地向导"
-    }, {
-      "id": 106,
-      "title": "特价机票"
-    }, {
-      "id": 107,
-      "title": "礼品卡"
-    }, {
-      "id": 108,
-      "title": "申卡·借钱"
-    }, {
-      "id": 109,
-      "title": "旅拍"
-    }, {
-      "id": 110,
-      "title": "更多"
-    }],
-    "popularList": [{
-      "title": "attractions",
-      "img": "upload/2dcda4e400ace9f993835fbb.jpg_250x250_d841fd57.jpg",
-      "list": ["龙门石窟", "老君山景区", "隋唐洛阳城国家遗址公园天堂名堂景区"]
-    }, {
-      "title": "hotel",
-      "img": "upload/200u0j000000aw3xuE230_C_360_360_Q50.jpg_.webp",
-      "list": ["伊川丽都国际酒店", "栾川智选假日酒店", "洛阳华阳广场国际大饭店"]
-    }],
-    "recommend": [
-      [{
-        "title": "一分钟教你玩古都洛阳",
-        "img": "upload/CggYHlXWwYCAWSf4AD7T3hxEde0314_D_500_250.jpg",
-        "tag": "旅行视频"
-      }, {
-        "title": "当地特色菜",
-        "img": "upload/d846f0a902264018b0bbf57410e6127a_D_250_250_Q90.jpg"
-      }],
-      [{
-        "img": "upload/100t10000000paws4EC47_C_250_250.jpg",
-        "sight": "龙门石窟",
-        "about": "当地必打卡"
-      }, {
-        "img": "upload/10020f0000007exdc99FE_C_250_250.jpg",
-        "sight": "名胜古迹",
-        "about": "当地必打卡"
-      }, {
-        "img": "upload/10040m000000dxiffB127_C_250_250.jpg",
-        "sight": "奇妙博物馆",
-        "about": "大家都爱去"
-      }]
+        "url": "upload/zg0e15000000yqzweE43E.jpg"
+      },
+      {
+        "id": 104,
+        "url": "upload/zg0r16000000yrvpo1109.jpg"
+      },
+      {
+        "id": 105,
+        "url": "upload/zg0r16000000zx6hb0CB8.jpg"
+      }
     ],
-    "localHot": [{
-      "id": 101,
-      "title": "景点",
-      "img": "upload/100t0l000000d61ht687A.png"
-    }, {
-      "id": 102,
-      "title": "住宿",
-      "img": "upload/10020l000000ddw8hB633.png"
-    }, {
-      "id": 103,
-      "title": "美食",
-      "img": "upload/100c0l000000d9klbC07D.png"
-    }, {
-      "id": 104,
-      "title": "购物",
-      "img": "upload/100u0l000000d6wtm2B89.png"
-    }]
+    "localNavs": [
+      {
+        "id": 101,
+        "title": "攻略·景点"
+      },
+      {
+        "id": 102,
+        "title": "门票·玩乐"
+      },
+      {
+        "id": 103,
+        "title": "美食林"
+      },
+      {
+        "id": 104,
+        "title": "周边游"
+      },
+      {
+        "id": 105,
+        "title": "一日游"
+      }
+    ],
+    "gridNavs": [
+      {
+        "id": 11,
+        "title": "grid-nav-hotel",
+        "children": [
+          {
+            "id": 101,
+            "title": "酒店"
+          },
+          {
+            "id": 102,
+            "title": "民宿·客栈",
+            "tag": "大促"
+          },
+          {
+            "id": 103,
+            "title": "机票/火车票+酒店",
+            "hot": "方便又便宜"
+          }
+        ]
+      },
+      {
+        "id": 12,
+        "title": "grid-nav-flight",
+        "children": [
+          {
+            "id": 201,
+            "title": "机票"
+          },
+          {
+            "id": 202,
+            "title": "火车票",
+            "tag": "暑运"
+          },
+          {
+            "id": 203,
+            "title": "汽车·船票"
+          },
+          {
+            "id": 204,
+            "title": "打车·租车"
+          }
+        ]
+      },
+      {
+        "id": 13,
+        "title": "grid-nav-travel",
+        "children": [
+          {
+            "id": 301,
+            "title": "旅游",
+            "tag": "678月节"
+          },
+          {
+            "id": 302,
+            "title": "高铁游"
+          },
+          {
+            "id": 303,
+            "title": "邮轮游"
+          },
+          {
+            "id": 304,
+            "title": "定制游"
+          }
+        ]
+      }
+    ],
+    "subnavs": [
+      {
+        "id": 101,
+        "title": "自由行"
+      },
+      {
+        "id": 102,
+        "title": "WiFi电话卡"
+      },
+      {
+        "id": 103,
+        "title": "保险·签证"
+      },
+      {
+        "id": 104,
+        "title": "换钞·购物"
+      },
+      {
+        "id": 105,
+        "title": "当地向导"
+      },
+      {
+        "id": 106,
+        "title": "特价机票"
+      },
+      {
+        "id": 107,
+        "title": "礼品卡"
+      },
+      {
+        "id": 108,
+        "title": "申卡·借钱"
+      },
+      {
+        "id": 109,
+        "title": "旅拍"
+      },
+      {
+        "id": 110,
+        "title": "更多"
+      }
+    ],
+    "popularList": [
+      {
+        "title": "attractions",
+        "img": "upload/2dcda4e400ace9f993835fbb.jpg_250x250_d841fd57.jpg",
+        "list": ["龙门石窟", "老君山景区", "隋唐洛阳城国家遗址公园天堂名堂景区"]
+      },
+      {
+        "title": "hotel",
+        "img": "upload/200u0j000000aw3xuE230_C_360_360_Q50.jpg_.webp",
+        "list": ["伊川丽都国际酒店", "栾川智选假日酒店", "洛阳华阳广场国际大饭店"]
+      }
+    ],
+    "recommend": [
+      [
+        {
+          "title": "一分钟教你玩古都洛阳",
+          "img": "upload/CggYHlXWwYCAWSf4AD7T3hxEde0314_D_500_250.jpg",
+          "tag": "旅行视频"
+        },
+        {
+          "title": "当地特色菜",
+          "img": "upload/d846f0a902264018b0bbf57410e6127a_D_250_250_Q90.jpg"
+        }
+      ],
+      [
+        {
+          "img": "upload/100t10000000paws4EC47_C_250_250.jpg",
+          "sight": "龙门石窟",
+          "about": "当地必打卡"
+        },
+        {
+          "img": "upload/10020f0000007exdc99FE_C_250_250.jpg",
+          "sight": "名胜古迹",
+          "about": "当地必打卡"
+        },
+        {
+          "img": "upload/10040m000000dxiffB127_C_250_250.jpg",
+          "sight": "奇妙博物馆",
+          "about": "大家都爱去"
+        }
+      ]
+    ],
+    "localHot": [
+      {
+        "id": 101,
+        "title": "景点",
+        "img": "upload/100t0l000000d61ht687A.png"
+      },
+      {
+        "id": 102,
+        "title": "住宿",
+        "img": "upload/10020l000000ddw8hB633.png"
+      },
+      {
+        "id": 103,
+        "title": "美食",
+        "img": "upload/100c0l000000d9klbC07D.png"
+      },
+      {
+        "id": 104,
+        "title": "购物",
+        "img": "upload/100u0l000000d6wtm2B89.png"
+      }
+    ]
   }
 }

@@ -1,0 +1,36 @@
+{
+  "import": {
+    "scope": "javascript,typescript",
+    "prefix": "im",
+    "body": ["import { $2 } from '$1';"],
+    "description": "Import a module"
+  },
+  "export-all": {
+    "scope": "javascript,typescript",
+    "prefix": "ex",
+    "body": ["export * from '$1';"],
+    "description": "Export a module"
+  },
+  "vue-script-setup": {
+    "scope": "vue",
+    "prefix": "temp",
+    "body": [
+      "<template>",
+      "  $1",
+      "</template>",
+      "",
+      "<script setup lang=\"ts\">",
+      "",
+      "</script>",
+      "",
+      "<style scoped lang=\"scss\">",
+      "",
+      "</style>"
+    ]
+  },
+  "vue-computed": {
+    "scope": "javascript,typescript,vue",
+    "prefix": "com",
+    "body": ["computed(() => { $1 })"]
+  }
+}
